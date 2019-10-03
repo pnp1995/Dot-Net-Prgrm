@@ -1,0 +1,30 @@
+[
+  {
+    "Name": "Pritam",
+    "PhoneNumber": 8421043599,
+    "City": "Munger",
+    "State": "Bihar",
+    "Zip": 811202
+  },
+  {
+    "Name": "Yadav",
+    "PhoneNumber": 8668286921,
+    "City": "Bangalore",
+    "State": "Karnataka",
+    "Zip": 560076
+  },
+  {
+    "Name": "Sudhir",
+    "PhoneNumber": 8793616214,
+    "City": "Ranchi",
+    "State": "Jharkhand",
+    "Zip": 834001
+  },
+   {
+    "Name": "Sharma ji",
+    "PhoneNumber": 8668286101,
+    "City": "BTM",
+    "State": "Karnataka",
+    "Zip": 5660076
+  },
+]

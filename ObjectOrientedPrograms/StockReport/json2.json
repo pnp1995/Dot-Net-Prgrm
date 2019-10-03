@@ -1,0 +1,22 @@
+[
+  {
+    "stockname": "Honda",
+    "shareperson": 15,
+    "stockprice": 20000
+  },
+  {
+    "stockname": "Bazaz",
+    "shareperson": "20",
+    "stockprice": 15000
+  },
+  {
+    "stockname": "Maruti",
+    "shareperson": 10,
+    "stockprice": 10000
+  },
+  {
+    "stockname": "Toyata",
+    "shareperson": 25,
+    "stockprice": 25000
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "RiceList":
+  [
+    {
+      "Name": "Basmati",
+      "Weight": 50,
+      "PriceperKg": 60
+    },
+    {
+      "Name": "Parmal",
+      "Weight": 40,
+      "PriceperKg": 70
+    }
+  ],
+  "PulsesList": [
+    {
+      "Name": "Moong",
+      "Weight": 50,
+      "Priceperkg": 80
+    },
+    {
+      "Name": "Redgram",
+      "Weight": 50,
+      "Priceperkg": 80
+    }
+  ],
+  "WheatList":
+  [
+    {
+      "Name": "Durum",
+      "Weight": 50,
+      "Priceperkg": 40
+    },
+    {
+      "Name": "Thin",
+      "Weight": 50,
+      "Priceperkg": 40
+    }
+
+  ]
+}
