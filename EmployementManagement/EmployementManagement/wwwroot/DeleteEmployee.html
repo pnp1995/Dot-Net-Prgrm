@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DELETE EMPLOYEE</title>
+</head>
+<body>
+    <div style="background-color:lightblue">
+        <h2 align="center"><b>DELETE EMPLOYEE DETAILS</b> </h2>
+        <form method="POST" id=" insert " action="AddEmployee">
+            <table border="0" align="center">
+                <tbody>
+                    <tr><td><br></td></tr>
+                    <tr>
+                        <td>
+                            <label for="id"><b>ID</b></label>
+                        </td>
+                        <td>
+                            <input type="text" id="eid" name="eid" placeholder="id" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <pre class="tab"></pre></td>
+                        <td width="50px">
+                            <b>
+                                <input type="button" value="ADD" id="ADD" onclick="window.location.href='https://localhost:44377//AddEmployee.html'">
+                            </b>
+
+                            <!--<b>
+                                <input type="button" value="DElETE" id="DElETE" onclick="window.location.href='https://localhost:44377//DeleteEmployee.html'">
+                            </b>-->
+                        <td width="50px">
+                            <input type="button" name="DElETE" id="buttonSubmit" onclick="window.location.href='https://localhost:44377//DeleteEmployee.html'" value="DELETE" />
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#buttonSubmit").click(function () {
+                var formData = new FormData();
+                formData.append("id", $("#eid").val());
+                $.ajax({
+                    url: "/delete",
+                    type: 'DELETE',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function (response) {
+                        alert("Employee Delete Sucessfully");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

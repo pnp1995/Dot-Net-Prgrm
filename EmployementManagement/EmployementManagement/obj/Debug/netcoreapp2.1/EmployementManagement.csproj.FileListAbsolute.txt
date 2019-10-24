@@ -1,0 +1,15 @@
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\bin\Debug\netcoreapp2.1\EmployementManagement.deps.json
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\bin\Debug\netcoreapp2.1\EmployementManagement.runtimeconfig.json
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\bin\Debug\netcoreapp2.1\EmployementManagement.runtimeconfig.dev.json
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\bin\Debug\netcoreapp2.1\EmployementManagement.dll
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\bin\Debug\netcoreapp2.1\EmployementManagement.pdb
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\obj\Debug\netcoreapp2.1\EmployementManagement.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\obj\Debug\netcoreapp2.1\EmployementManagement.RazorAssemblyInfo.cache
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\obj\Debug\netcoreapp2.1\EmployementManagement.RazorAssemblyInfo.cs
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\obj\Debug\netcoreapp2.1\EmployementManagement.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\obj\Debug\netcoreapp2.1\EmployementManagement.AssemblyInfo.cs
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\obj\Debug\netcoreapp2.1\EmployementManagement.RazorTargetAssemblyInfo.cache
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\obj\Debug\netcoreapp2.1\EmployementManagement.dll
+C:\Users\admin\source\repos\EmployementManagement\EmployementManagement\obj\Debug\netcoreapp2.1\EmployementManagement.pdb

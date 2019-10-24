@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LoginEmployee</title>
+</head>
+<body>
+    <div style="background-color:lightblue">
+        <h2 align="center"><b>WELCOME TO LOGIN EMPLOYEE DETAILS</b> </h2>
+        <form method="POST" id=" insert " action="LoginEmployee">
+            <table border="0" align="center">
+                <tbody>
+                    <tr><td><br></td></tr>
+                    <tr>
+                        <td>
+                            <label for="username"><b>USERNAME</b></label>
+                        </td>
+                        <td>
+                            <input type="text" id="id" name="id" placeholder="username" required />
+                        </td>
+                    </tr>
+                    <tr><td><br /></td></tr>
+                    <tr>
+                        <td><label><b>PASSWORD</b></label></td>
+                        <td><input pattern="text" id="city" name="city" placeholder="password" /></td>
+                    </tr>
+                    <tr>
+                        <td> <pre class="tab"></pre></td>
+                        <td width="50px">
+                            <b>
+                                <input type="button" value="SIGNUP" name="SIGNUP" onclick="window.location.href='https://localhost:44377//AddEmployee.html'">
+                            </b>
+                        <td width="50px">
+                            <input type="button" name="LOGIN" id="buttonSubmit" onclick="buttonSubmit();" value="LOGIN" />
+                        </td>
+                    </tr>
+
+            </table>
+        </form>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#buttonSubmit").click(function () {
+                var formData = new FormData();
+                formData.append("id", $("#id").val());
+                formData.append("city", $("#city").val());
+                $.ajax({
+                    url: "/Login",
+                    type: 'POST',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function (response) {
+                    window.location.href='https://localhost:44377//ListofEmployee.html'
+                    },
+                    error : function (error){
+                        alert("INVALID USER TRY OR SIGNUP")
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
