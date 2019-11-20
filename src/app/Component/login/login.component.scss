@@ -1,0 +1,42 @@
+.first{
+    display: inline-table;
+    height: 61%;
+    justify-content: center;
+    margin-top: 9%;
+    margin-left: 31%;
+    justify-content: space-between;
+}
+.email{
+    display: grid;
+}
+.pass{
+    @extend .email;
+}
+.button{
+display: flex;
+    justify-content: space-evenly;
+}
+.bttn{
+    display: contents;
+    color: dodgerblue; 
+}
+.google{
+    display: grid;
+    margin-top: 4%;
+    width: 51%;
+    margin-left: 23%;
+}
+.image{
+    border-radius: 55%;
+    height: 24px;
+    width: 21%;
+    margin-right: 10%;
+}
+.fb{
+    @extend.image
+}
+.facebook{
+    margin-top: 3%;
+    width: 52%;
+    margin-left: 22%;
+}

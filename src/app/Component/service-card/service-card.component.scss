@@ -1,0 +1,86 @@
+.style{
+    background: darkturquoise;
+    margin-top: 0px;
+}
+.cards {
+    width: 100%;
+    height: 100%;
+}
+.innercard[_ngcontent-c1] {
+    background: darkseagreen;
+    overflow: visible;
+    display: flex;
+    width: 20%;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+.mat-card {
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    border-radius: 2px;
+}
+
+.outercard[_ngcontent-c1][_ngcontent-c1] {
+    background: khaki;
+    width: 96%;
+    height: 97%;
+    margin-left: -19%;
+    margin-top: 28%;
+    overflow: visible;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    margin-top: -20%;
+}
+// .outercard{
+//     background: khaki;
+.innercard1{
+    //  background: darkseagreen;
+    //  width: 96%;
+    //  height: 96%;
+    //  margin-left: -19%;
+    //  margin-top: 28%;
+    //  overflow: visible;
+    //  display: -webkit-box;
+    //  display: flex;
+    //  -webkit-box-orient: vertical;
+    //  -webkit-box-direction: normal;
+    //  flex-direction: column;
+    //  margin-top: -20%;
+    @extend .innercard;
+   
+}
+.outercard1{
+    // background: khaki;
+    // overflow: visible;
+    // display: flex;
+    // width: 20%;
+    // height: 10rem;
+    @extend .outercard;
+}
+.sigin{
+    
+    display: flex;
+    justify-content: center;
+  
+}
+.servicecard[_ngcontent-c1] {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+    justify-content: space-evenly;
+    width: 100;
+    padding: 8% 1%;
+    height: auto;
+    margin-bottom: -5%;
+}
+.servicetitle{
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 34px;
+    color: black;
+    font-family: initial;
+}

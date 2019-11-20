@@ -1,0 +1,30 @@
+<div class="cards">
+  <div>
+    <h1 class="style" *ngIf="select"> Fundoo serviceCard</h1>
+  </div>
+  <div class="servicetitle" *ngIf="select">
+    <span>Fundoo Notes offered. Choose below services to UserRegistration.</span>
+  </div>
+<div class="servicecard" >
+  <mat-card class="innercard" *ngIf="card1">
+    <mat-card class="outercard">
+      <p class="p1">Price : $59 per month</p>
+      <p class="p2">Basic Service</p>
+      <p class="p3">* $59/month <br>
+        * Title, Description, images, label, color, etc.
+      </p>
+    </mat-card> <strong (click)="Basic()">{{button}}</strong>
+  </mat-card>
+  <mat-card class="innercard1" *ngIf="card2">
+    <mat-card class="outercard1">
+      <p class="p1">Price : $99 per month</p>
+      <p class="p2">Advance Service</p>
+      <p class="p3">* $99/month <br>
+        * Title, Description, images, label, color, etc.
+    </mat-card><strong (click)="Advance()" >{{button}}</strong>
+  </mat-card>
+</div>
+  <div class="sigin" *ngIf="select">
+     <button color="primary" mat-raised-button routerLink="/login">SIGN IN </button>
+  </div>
+</div>

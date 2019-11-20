@@ -1,0 +1,35 @@
+<mat-card class="first">
+<form [formGroup]='login'>
+<h1>
+  Welcome To Fundoo Login
+</h1>
+<div>
+  <mat-form-field class="email" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder=" " type="text" formControlName="email" />
+  </mat-form-field>
+</div>
+<div>
+<mat-form-field class="pass" appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput placeholder=" " type="password" formControlName="password" />
+ </mat-form-field> 
+</div>  
+<div class="button">
+    <button (click)="onlogin()" mat-raised-button routerLink="/dash">SIGIN</button> 
+
+    <button color="primary" mat-raised-button routerLink="/register">CREATE </button>
+ </div>
+ <div style=" margin-top: 10px;">
+    <button class="bttn" color="primary"  routerLink="/forget"> Forget Password ? </button>
+ </div>
+ <div  class="google" >
+   <button  mat-raised-button color="primary" (click)="googlelogin()" 
+   mat-button-id="google"><img  class="image" src="..\assets\google.png">Login with google</button>
+ </div>
+ <div class="facebook" >
+  <button  mat-raised-button color="primary" (click)="fblogin()" 
+  mat-button-id="facebook"><img  class="fb" src="..\assets\fb.jpg">Login with facebook</button>
+</div>
+</form>
+</mat-card>

@@ -1,0 +1,32 @@
+.first{
+    display: flex;
+    justify-content: center;
+     margin: auto;
+    margin-top: 50px;
+    width: 430px;
+    height: 495px;
+
+}
+.field{
+    margin-left: 20px;
+}
+.data{
+    display: flex;
+    flex-direction: column;
+}
+.form{
+    display: flex;
+    justify-content: space-between;
+}
+.Email{
+    min-width: 429px;
+}
+.firstBox{
+    padding: 0px 17px 0px 0px;
+}
+.sum{
+    display: block;
+    justify-content: space-evenly;
+    margin-left: 30%;
+    margin-top: 3%;
+}
