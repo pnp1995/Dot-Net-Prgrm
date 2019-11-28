@@ -1,0 +1,36 @@
+<div class="card">
+  <mat-card class="notess" *ngIf="note1" (click)="onClick()">Take a note..
+  </mat-card>
+  <form [formGroup]='notes'>
+    <mat-card class="notes1" *ngIf="note2">
+      <div>
+        <input matInput placeholder="Title" type="title" formControlName="title" />
+      </div>
+      <div>
+        <input matInput placeholder="Description" type="description" formControlName="description" />
+      </div>
+      <div style="margin-top: 67px;margin-bottom: -13px;" fxLayout="row" fxLayoutAlign="space-evenly end">
+
+
+        <i class="material-icons-outlined">add_alert</i>
+
+
+        <i class="material-icons-outlined">person_add</i>
+
+        <i class="material-icons-outlined">palette</i>
+
+        <i class="material-icons-outlined">image</i>
+
+        <i class="material-icons-outlined">archive</i>
+
+        <i class="material-icons-outlined">more_vert</i>
+
+        <i class="material-icons-outlined">undo</i>
+
+        <i class="material-icons-outlined">redo</i>
+        <button type="submit" (click)="onSubmit()" mat-button id="SUBMIT">SUBMIT</button>
+      </div>
+    </mat-card>
+  </form>
+  <app-notes-display [notes] = "displayNotes"></app-notes-display>
+</div>

@@ -1,0 +1,13 @@
+.notess{
+    margin-top: 120px;
+    width: 40%;
+    border-radius: 27px;
+}
+.notes1{
+ @extend .notess;
+  width: 144%;
+}
+.card{
+    display: flex;
+    justify-content: center;
+}

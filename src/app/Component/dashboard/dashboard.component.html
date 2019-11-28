@@ -1,57 +1,77 @@
 <div>
-    <mat-drawer-container class="example">
-        <mat-toolbar color="" class="toolbar">
-      <button mat-icon-button (click)="drawer.toggle()" style="outline:none">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <div>Fundoo Notes </div>
-      <img class="keep" src=" ..\assets\keep_48dp.png">
-      <div class="search-div">
-        <mat-card class="search-bar">
-          <button mat-icon-button class="search-button" style="outline:none">
-            <mat-icon matTooltip="Search">search</mat-icon>
-          </button>
-          <input class="form-control" name="search" placeholder="search">
-        </mat-card>
-      </div>
-      <div>
-        <button mat-icon-button *ngIf="popup" (click)="listview()">
-          <img class="img" src="..\assets\demo.svg">
+  <mat-toolbar class="tool">
+    <button mat-icon-button (click)="drawer.toggle()" style="outline:none">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div style="margin-left: -6pc;">
+      <img src=" ..\assets\keep_48dp.png " style="height: 50px">
+    </div>
+    <div style="margin-left: -6pc;">
+      <h1 style="font-family: cursive; font-weight: 400; font-size: 30px;">Fundoo Notes</h1>
+    </div>
+    <div class="search-div">
+      <mat-card class="search-bar">
+        <button id="search-button" mat-icon-button style="outline: none;">
+          <mat-icon matSuffix class="suffix">search</mat-icon>
         </button>
-      </div>
-      <div class="profile">
-        <img class="image" src="..\assets\download.jpg">
-      </div>
-    </mat-toolbar>
+        <input class="form-control" type="text" name="search" autocomplete="off" placeholder="search ">
+      </mat-card>
+    </div>
+    <div>
+      <button mat-icon-button>
+        <mat-icon style="height:20px;">list</mat-icon>
+      </button>
+    </div>
+    <div class="profile" style="margin-right: 17px;">
+      <button mat-fab [matMenuTriggerFor]="menu">pritam</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Pritam</button>
+        <button mat-menu-item>SigOut</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <mat-drawer-container class="example-container">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
 
-    <mat-drawer-container class="example-container">
-        <mat-drawer #drawer class="example-sidenav" mode="side">
-          
-        <p>Fundoo Keep</p>
-        
-          <div  class="notes">
-            <i class="material-icons-outlined">emoji_objects</i>
-            <button mat-button class="button">Notes</button><br>
-          </div>
-           <i class="material-icons-outlined">notifications_none</i>
-          <button mat-button class="button">Reminders</button><br>
-    
-          <i class="material-icons-outlined">create</i>
-          <button mat-button class="button">Edit labels</button><br>
-      
+      <p style="font-family: cursive;font-size: 25px; margin-top: 0px;">Fundoo Keep</p>
+
+      <div class="paddingnote">
+        <div class="options">
+          <i class="material-icons">lightbulb_outline</i>
+          <button mat-button class="button">Notes</button>
+        </div>
+        <div class="options">
+          <i class="material-icons-outlined">notifications_none</i>
+          <button mat-button class="button">Reminders</button>
+        </div>
+        <div class="options">
+          <mat-divider>
+            <i class="material-icons-outlined">create</i>
+            <button mat-button class="button">Edit labels</button>
+          </mat-divider>
+
+        </div>
+        <div class="options">
           <i class="material-icons-outlined">archive</i>
-          <button mat-button class="button">Archive</button><br>
-       
+          <button mat-button class="button">Archive</button>
+        </div>
+        <div class="options">
           <i class="material-icons-outlined">delete</i>
           <button mat-button class="button">Trash</button>
-        
+        </div>
+      </div>
 
-        <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-  <button (click)="showFiller = !showFiller" mat-raised-button> -->
+      <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+      <button (click)="showFiller = !showFiller" mat-raised-button> -->
 
-        <!-- </button> -->
-          
-      </mat-drawer>
-    </mat-drawer-container>
-  </mat-drawer-container> 
+      <!-- </button> -->
+
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-notes> </app-notes>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+
 </div>

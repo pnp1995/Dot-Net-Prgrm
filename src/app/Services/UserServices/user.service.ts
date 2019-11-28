@@ -5,9 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-
+  
   constructor(private http: HttpClient) { }
   link = 'https://localhost:44366/api/Account';
+
   postrequest(user) {
     console.log("user",user.firstName);
     
@@ -42,5 +43,18 @@ export class UserService {
     }
     return this.http.put(this.link + '/ResetPassword',body);
   }
+  google(email) {
+  const body = {
+    "Emailid": email
+  }
+  return this.http.post(this.link + '/google', body);
+  }
+  fb(email) {
+    const body = {
+      "Emailid": email
+    }
+    return this.http.post(this.link + '/fb', body);
+    }
+   
 }
 

@@ -1,0 +1,23 @@
+<div>
+  <mat-card class="card" *ngFor="let note of notes ; let i= index">
+    <div>
+    <div >
+     {{note.title}} 
+      <br>
+      {{note.descriiption}}    
+    </div>
+    
+    <i class="material-icons-outlined">add_alert</i>
+
+
+    <i class="material-icons-outlined">person_add</i>
+
+    <i class="material-icons-outlined">palette</i>
+
+    <i class="material-icons-outlined">image</i>
+
+    <i class="material-icons-outlined">archive</i>
+
+    <i class="material-icons-outlined">more_vert</i>
+
+    <button type="submit" (click)="onEdit(note.id,note.title,note.descriiption)"  mat-button id="SUBMIT">ADD</button>

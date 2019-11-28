@@ -1,0 +1,56 @@
+<div>
+<mat-card class="card" *ngFor="let note of notes ; let i= index">
+  <div>
+  <div >
+   {{note.title}} 
+    <br>
+    {{note.descriiption}}    
+  </div>
+    <div style=" margin-top: 43px;" >
+        <button mat-button [matMenuTriggerFor]="menu"  matTooltip="Remind Me">
+      <i class="material-icons-outlined" >add_alert</i> &nbsp; &nbsp;
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item> 
+            <mat-form-field style="width: 58%;
+            border-radius: 143px">
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="date" [(ngModel)]="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <button type="submit" (click)="onAdd(note.id)"  mat-button id="SUBMIT">ADD</button>
+        </button>
+      </mat-menu>
+    </button>
+      <i class="material-icons-outlined">person_add</i>&nbsp; &nbsp;
+
+       <button  [matMenuTriggerFor]="colorMenu">
+         <i class="material-icons-outlined">palette</i>
+        </button>
+        <mat-menu #colorMenu="matMenu" yPosition="above" [overlapTrigger]="false">
+          <div *ngFor = "let color of colorpalette; let name = index; " (click)="Addcolor(note.id, name)"[ngStyle]="{'background':color.colorcode}"
+          style=" height: 30px;
+          width:30px;
+          border-radius: 50%;
+          margin: 1px;">
+            <!-- <div>{{color.colorcode}}</div> -->
+          </div>                   
+          </mat-menu>
+
+      <i class="material-icons-outlined">image</i>&nbsp; &nbsp;
+
+      <button mat-button (click)="onArchive(note.id)">
+      <i class="material-icons-outlined">archive</i>&nbsp; &nbsp;
+    </button> 
+
+    <button mat-button [matMenuTriggerFor]="popup">
+      <i class="material-icons-outlined">more_vert</i>
+      <mat-menu #popup="matMenu">
+          <button mat-menu-item  (click)="DeleteNote(note.id)">Delete Note
+          </button>
+          <button mat-menu-item>Add Label</button>
+        </mat-menu>
+    </button>
+  </div>
+  </div>
+</mat-card>
+</div>
