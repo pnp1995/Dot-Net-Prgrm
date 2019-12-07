@@ -7,7 +7,7 @@ import { NotesServiceService } from 'src/app/Services/NotesServices/notes-servic
   styleUrls: ['./get-notes.component.scss']
 })
 export class GetNotesComponent implements OnInit {
-  token = JSON.parse(localStorage.getItem('userData'));
+  token = JSON.parse(localStorage.getItem('token'));
   displayNotes = [];
   constructor(private note: NotesServiceService) { }
 

@@ -1,0 +1,43 @@
+<div class="collab font-family">
+  <span> Collaborator</span>
+  <mat-divider></mat-divider>
+
+  <div fxLayout="row">
+    <div class="circle">
+      <img style="padding: 15%;margin: 2%;" src="../../../assets/person.svg">
+    </div>
+    <div fxLayout="column">
+      <div class="name-size"><b>{{userName}}</b></div>
+      <div class="email-size">
+        {{userEmail}}
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row" *ngFor="let person of collabList">
+      <div class="circle">
+        <img style="padding: 15%;" src="../../../assets/person.svg">
+      </div>
+      <div class="email-size">
+        {{person.receiverEmail}}
+      </div>
+      <div (click)="deleteCollaboratot(person.id)">
+        <img src="../../../assets//cance.svg">
+      </div>      
+  </div>
+
+
+  <div fxLayout="row">
+    <div class="circle">
+        <img style="padding: 15%;" src="../../../assets/person.svg">
+    </div>
+    <div>
+        <input matInput placeholder="person or email to share with" [(ngModel)]="addemail">
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+  <button mat-button (click)="closeCollaborater()">Cancel</button>
+  <button mat-button (click)="sendData()">Save</button>
+
+</div>

@@ -18,7 +18,9 @@ export class NotesServiceService {
     return this.http.get(this.link + '/list', { headers: new HttpHeaders().set('Authorization', 'Bearer ' + token) });
   }
   putrequest(id, date, token) { 
+    console.log(date);
     return this.http.put(this.link + '/reminder?Reminder='+date+'&Id='+id, null);
+
   }
   GetArchive(id) {
    return this.http.put(this.link + '/archive?Id='+id,null);
@@ -32,5 +34,12 @@ export class NotesServiceService {
   addTrash?(id) {  
   return this.http.post(this.link + '/trash?Id=' +id,null);
   }
-
+  update(id,title,token,descriiption){
+    const body = {
+      "Id" : id,
+      "Title": title,
+      "Descriiption": descriiption
+    }
+    return this.http.post(this.link + '/update',body ,{ headers: new HttpHeaders().set('Authorization', 'Bearer ' + token) });
+  }
 }

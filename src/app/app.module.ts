@@ -29,7 +29,12 @@ import { GetNotesComponent } from './Component/get-notes/get-notes.component';
 import { RemainderComponent } from './Component/remainder/remainder.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { EditComponent } from './Component/edit/edit.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { CollaboratorComponent } from './Component/collaborator/collaborator.component';
+import { LabelComponent } from './Component/label/label.component';
+import { ArchiveComponent } from './Component/archive/archive.component';
+import { TrashComponent } from './Component/trash/trash.component';
 
   // Config..
 export function getAuthServiceConfigs()  
@@ -60,7 +65,12 @@ let config = new AuthServiceConfig([
     NotesDisplayComponent,
     GetNotesComponent,
     RemainderComponent,
-    EditComponent
+    EditComponent,
+    CollaboratorComponent,
+    LabelComponent,
+    ArchiveComponent,
+    TrashComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -82,8 +92,13 @@ let config = new AuthServiceConfig([
     MatDividerModule,
     FlexLayoutModule,
     MatDatepickerModule,
-    MatNativeDateModule 
+    MatNativeDateModule,
+    MatDialogModule,
+    MatTooltipModule
   ],
+  entryComponents : [EditComponent,
+    LabelComponent,CollaboratorComponent
+   ],
   providers: [
     {
       provide: AuthServiceConfig,

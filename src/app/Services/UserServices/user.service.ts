@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +55,11 @@ export class UserService {
     }
     return this.http.post(this.link + '/fb', body);
     }
-   
+   get(token){
+     return this.http.get(this.link + '/jwt', { headers: new HttpHeaders().set('Authorization', 'Bearer ' + token) });
+   }
+   getProfilepic(token, formdata) {
+    return this.http.post(this.link +'/profilepic',formdata, { headers: new HttpHeaders().set('Authorization', 'Bearer ' + token) })
+  }
 }
 

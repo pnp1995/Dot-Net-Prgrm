@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Edit Label</h1>
+<mat-divider></mat-divider>
+<div fxLayout="row" fxLayoutAlign="start none" >
+  <div style="margin-top: 18px;">  
+  <button (click)="deleteLabel(onelabel.id)" style=" border: none; background-color: snow;">
+        <i class="material-icons-outlined">delete</i>
+      </button>
+    </div>
+  <input type="text" mat-input [(ngModel)]="label" placeholder="create a new label"
+    style="outline: none; font-size:medium;border: none;margin-top: 29px; margin-left: 2px;">
+  <div style="margin-left: -31px;margin-top: 18px;">
+    <button (click)="addLabel()" style="border: none;background-color: snow;">
+    <i class="material-icons-outlined">done</i>
+  </button>
+</div>
+</div>
+
+  
+  <!-- <input type="text" mat-input value="{{onelabel.label}}" #title
+    style="outline: none;font-size: large;border: none;margin-top: 10px;margin-left: 30px ;">
+  <button (click)="updateLabel(onelabel.id,title.value)"
+    style="border: none;background-color: snow;margin-left: -80px;">
+    <i class="material-icons-outlined">edit</i>
+  </button> -->
+
+<mat-divider></mat-divider>
+<!-- <div mat-dialog-content>
+ *ngFor="let onelabel of label"
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div> -->
+<div mat-dialog-actions>
+  <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Done</button>
+</div>

@@ -2,36 +2,6 @@
      display: flex;
      justify-content: space-between;
  }
-// .image{
-//     width: 46%;
-//     margin-top: 7%;
-//     border-radius: 90%;
-//     margin-left: 227%;
-// }
-// .form-control{
-//     padding-bottom: 4%;
-//     padding-top: 5%;
-//     width: 90%;
-
-// }
-// // .example{
-// //     height: 100%;
-// //     min-height: 100%;
-// //     overflow: initial;
-// //   }
-//   .tool{
-//       min-height: 500px;
-//       height: auto;
-//       width: 100%;
-//       min-width: 100%;
-  
-//   }
-//   .toolbar{
-//       height: 80px;
-//       min-height: 75px;
-//       min-width: 100%;
-//       background: #f9f9f9;
-//   }
   .example-container {
     width: 100%;
     height:545px;
@@ -49,13 +19,7 @@
  .search-bar {   
   padding: 0px;
   width: 570px;
-//   position: absolute;
-//   display: flex;
-//   flex-direction: row;
-//   width: 48vw;
-//   height: 26px;
-//   left: 29%;
-//   top: 0.7%;
+
   border-radius: 16px;
 //   outline: none;
  }
@@ -68,5 +32,22 @@
  .options{
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 25%;
  }
+ .options2{
+   display: contents;
+ }
+.list{
+  display: inline;
+}
+.grid{
+  display: inline;
+}
+.profile {
+  background-size: cover;
+  background-color: snow;
+}
+.pic{
+  width: 15em;
+    height: 10em;
+}

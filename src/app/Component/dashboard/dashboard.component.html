@@ -18,17 +18,31 @@
       </mat-card>
     </div>
     <div>
-      <button mat-icon-button>
-        <mat-icon style="height:20px;">list</mat-icon>
+      <button class="list" mat-icon-button  *ngIf='view==false' matTooltip="list View" (click)="changeView()">
+        <mat-icon><img src="../../../assets/listview.svg" height="23px"></mat-icon>
+        <!-- <mat-icon style="height:20px;">list</mat-icon> -->
       </button>
+  <button class="grid" mat-icon-button *ngIf='view==true'  matTooltip="Grid View" (click)="changeView()">
+    <mat-icon><img src="../../../assets/gridview.png" height="25px"></mat-icon>
+  </button>     
     </div>
-    <div class="profile" style="margin-right: 17px;">
-      <button mat-fab [matMenuTriggerFor]="menu">pritam</button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Pritam</button>
-        <button mat-menu-item>SigOut</button>
-      </mat-menu>
-    </div>
+    <div >
+        <div style="margin-right:10px;"> 
+        <button class="profile"  mat-fab [matMenuTriggerFor]="menu" color='disabled' style="outline:none" 
+        [ngStyle]="{'background-image': 'url(' + photo + ')'}"></button>
+        <div>
+        <mat-menu #menu="matMenu" >
+          <!-- <button inputType="file"></button> -->
+          <input style="display: none" type="file"  #file (change)="onFileChanged($event)"  id="selectedFile" #select >
+          <button class="profile" (click)="select.click()"  [ngStyle]="{'background-image': 'url(' + photo + ')'}" mat-fab></button>
+          <div >{{userName}} </div>
+          <div>{{userEmail}}</div>
+            <button mat-menu-item (click)="signout()" routerLink="/login" matTooltip="Log out">sign out</button>   
+          </mat-menu>
+        </div>
+        </div>   
+        </div>
+      
   </mat-toolbar>
   <mat-drawer-container class="example-container">
     <mat-drawer #drawer class="example-sidenav" mode="side">
@@ -44,34 +58,42 @@
           <i class="material-icons-outlined">notifications_none</i>
           <button mat-button class="button">Reminders</button>
         </div>
-        <div class="options">
-          <mat-divider>
-            <i class="material-icons-outlined">create</i>
-            <button mat-button class="button">Edit labels</button>
-          </mat-divider>
-
+        <mat-divider></mat-divider>
+        <div class="options2">
+          <div *ngFor="let onelabel of label">
+            <div fxLayout="row">
+              <img src="../../../assets/labels.svg">
+            <p style="margin-left: 21px;">{{onelabel?.label}}</p>
+          </div>
         </div>
-        <div class="options">
-          <i class="material-icons-outlined">archive</i>
-          <button mat-button class="button">Archive</button>
-        </div>
-        <div class="options">
-          <i class="material-icons-outlined">delete</i>
-          <button mat-button class="button">Trash</button>
+        <div class="row">
+          <i class="material-icons-outlined" mat-icon-button matTooltip="Label">edit</i>
+          <button mat-button class="button" (click)="openLabel()">Edit labels</button>
         </div>
       </div>
 
-      <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+      <mat-divider></mat-divider>
+      <div class="options">
+        <i class="material-icons-outlined">archive</i>
+        <button mat-button class="button">Archive</button>
+      </div>
+      <div class="options">
+        <i class="material-icons-outlined">delete</i>
+        <button mat-button class="button">Trash</button>
+      </div>
+</div>
+
+<!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
       <button (click)="showFiller = !showFiller" mat-raised-button> -->
 
-      <!-- </button> -->
+<!-- </button> -->
 
-    </mat-drawer>
-    <mat-drawer-content>
-      <app-notes> </app-notes>
-      <router-outlet></router-outlet>
-    </mat-drawer-content>
-  </mat-drawer-container>
+</mat-drawer>
+<mat-drawer-content>
+  <app-notes> </app-notes>
+  <router-outlet></router-outlet>
+</mat-drawer-content>
+</mat-drawer-container>
 
 
 </div>

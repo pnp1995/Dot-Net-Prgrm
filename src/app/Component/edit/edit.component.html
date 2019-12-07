@@ -1,23 +1,21 @@
-<div>
-  <mat-card class="card" *ngFor="let note of notes ; let i= index">
-    <div>
-    <div >
-     {{note.title}} 
-      <br>
-      {{note.descriiption}}    
-    </div>
-    
-    <i class="material-icons-outlined">add_alert</i>
+<div class="edit">
+  <div style="margin-top: 90px;">
+  <input matInput  type="text" value="{{onenote.title}}" #title>
+  <br><br>
+  <input matInput  type="text" value="{{onenote.descriiption}}" #description>
+</div>
+</div>
+<div >
+  <i class="material-icons-outlined">add_alert</i>
 
+  <i class="material-icons-outlined">person_add</i>
 
-    <i class="material-icons-outlined">person_add</i>
+  <i class="material-icons-outlined">palette</i>
 
-    <i class="material-icons-outlined">palette</i>
+  <i class="material-icons-outlined">image</i>
 
-    <i class="material-icons-outlined">image</i>
+  <i class="material-icons-outlined">archive</i>
 
-    <i class="material-icons-outlined">archive</i>
-
-    <i class="material-icons-outlined">more_vert</i>
-
-    <button type="submit" (click)="onEdit(note.id,note.title,note.descriiption)"  mat-button id="SUBMIT">ADD</button>
+  <i class="material-icons-outlined">more_vert</i>
+  <button type="submit" (click)="onSubmit(title.value, description.value)" mat-button id="SUBMIT">SAVE</button>
+</div>

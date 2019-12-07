@@ -1,56 +1,63 @@
-<div>
-<mat-card class="card" *ngFor="let note of notes ; let i= index">
-  <div>
-  <div >
-   {{note.title}} 
-    <br>
-    {{note.descriiption}}    
-  </div>
-    <div style=" margin-top: 43px;" >
-        <button mat-button [matMenuTriggerFor]="menu"  matTooltip="Remind Me">
-      <i class="material-icons-outlined" >add_alert</i> &nbsp; &nbsp;
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item> 
-            <mat-form-field style="width: 58%;
-            border-radius: 143px">
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="date" [(ngModel)]="date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-              <button type="submit" (click)="onAdd(note.id)"  mat-button id="SUBMIT">ADD</button>
-        </button>
-      </mat-menu>
-    </button>
-      <i class="material-icons-outlined">person_add</i>&nbsp; &nbsp;
+<div fxLayout="row wrap" FxLayoutAlign="center center" class="DisplayNotesMain">
 
-       <button  [matMenuTriggerFor]="colorMenu">
-         <i class="material-icons-outlined">palette</i>
-        </button>
-        <mat-menu #colorMenu="matMenu" yPosition="above" [overlapTrigger]="false">
-          <div *ngFor = "let color of colorpalette; let name = index; " (click)="Addcolor(note.id, name)"[ngStyle]="{'background':color.colorcode}"
-          style=" height: 30px;
-          width:30px;
+  <mat-card class="card" *ngFor="let note of notes ; let i= index"
+    [style.background-color]="colorpalette[note.colour]['colorcode']" [ngClass]="{'notesDisplay':flag==true,'notes':flag==false}" >
+    <div>
+      <div (click)="openDialog(note)">
+        <span> {{note.title}} </span>
+        <br>
+        <span> {{note.descriiption}} </span>
+      </div>
+      <div>
+      <span (click)="pin(noteindex,note.id)" *ngIf="note.isPin==false">
+        <img src="../../../assets/pin.svg">
+      </span>
+      <span style="display: flex;"(click)="unpin(noteindex,note.id)" *ngIf="note.isPin==true">
+        <img src="../../../assets/unpin.svg">
+      </span>
+    </div>
+      <div class="notes_icon">
+        <i class="material-icons-outlined" [matMenuTriggerFor]="menu" matTooltip="Remind Me" >add_alert</i>
+        <mat-menu #menu="matMenu" [overlapTrigger]="false">
+          <button mat-menu-item>Reminder : </button>
+          <button mat-menu-item>Later Today</button>
+          <button mat-menu-item>Later Tomorrow</button>
+          <button mat-menu-item>Next Week</button>
+          <button mat-menu-item>Picker
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker"  name="date" [(ngModel)]="date" placeholder="Choose a date" style="width:50%">
+              <mat-datepicker-toggle  matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <button type="submit" (click)="setReminder(note.id)" mat-button id="SUBMIT">Set</button>
+            </mat-form-field>            
+          </button>
+        </mat-menu>
+       
+        <i class="material-icons-outlined"  mat-icon-button (click)="openCollaborater(note)" matTooltip="Collaborator">person_add</i>
+
+        <i class="material-icons-outlined" [matMenuTriggerFor]="colorMenu">palette</i>
+
+        <mat-menu class="colorpalette-card" #colorMenu="matMenu" yPosition="above" [overlapTrigger]="false">
+
+          <div *ngFor="let color of colorpalette; let name = index;" [style.background-color]="color.colorcode"
+            (click)="Addcolor(note.id, name)" style=" height: 30px; width:30px;
           border-radius: 50%;
           margin: 1px;">
-            <!-- <div>{{color.colorcode}}</div> -->
-          </div>                   
-          </mat-menu>
+          </div>
+        </mat-menu>
 
-      <i class="material-icons-outlined">image</i>&nbsp; &nbsp;
+        <i class="material-icons-outlined">image</i>
 
-      <button mat-button (click)="onArchive(note.id)">
-      <i class="material-icons-outlined">archive</i>&nbsp; &nbsp;
-    </button> 
+        <i class="material-icons-outlined" (click)="onArchive(note.id)">archive</i>
 
-    <button mat-button [matMenuTriggerFor]="popup">
-      <i class="material-icons-outlined">more_vert</i>
-      <mat-menu #popup="matMenu">
-          <button mat-menu-item  (click)="DeleteNote(note.id)">Delete Note
-          </button>
+        <i class="material-icons-outlined" [matMenuTriggerFor]="popup">more_vert</i>
+        <mat-menu #popup="matMenu">
+          <div mat-menu-item (click)="DeleteNote(note.id)">Delete Note
+          </div>
           <button mat-menu-item>Add Label</button>
         </mat-menu>
-    </button>
-  </div>
-  </div>
-</mat-card>
+
+      </div>
+    </div>
+  </mat-card>
 </div>

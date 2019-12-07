@@ -1,9 +1,45 @@
 .card{
-    
-    justify-content: center;
     width: fit-content;
-    margin-left: 44%;
-    margin-top: 7%;
-    display: flex;
+    // margin-left: 44%;
+    margin: 1%;
     border-radius: 5%;
+    width: 3em;
 }
+.colorpalette-card {
+    width: 175px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .notes_icon{
+    display: flex;
+    align-items: center;   
+  }
+  .notesDisplay{
+    width: 265px;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    margin: 8px;
+    position:relative;
+    margin-right: auto;
+    min-height: 30px;
+    flex-wrap: wrap;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .notes {
+    margin-left: 0px;
+    opacity: 0.5;
+    width: 580px;
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-top: 0.5em;
+    padding: 0.5%;
+    border-radius: 10px;
+    outline: none;
+  }

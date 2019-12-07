@@ -28,18 +28,13 @@ export class LoginComponent implements OnInit {
   }
   onlogin() {
     console.log('under submit', this.login.value);
-    this.userService.postRequest(this.login.value).subscribe((data: any) => {
-      localStorage.setItem('userData',JSON.stringify(data));
+    this.userService.postRequest(this.login.value).subscribe( (data:any) => {
+      console.log("res in login-->",data);    
+      localStorage.setItem('token', JSON.stringify(data));
+      // localStorage.setItem('token',response['result']);
       this.router.navigate(['/dash']);
     });
   }
-  // googlelogin() {
-  //   this.sub = this.auth.signIn("google").subscribe((data: any) => {
-  //     console.log(data);
-  //     this.user = data; return this.router.navigateByUrl('/dash');
-  //   });
-  // }
-
   googlelogin(): void {
     this.auth.signIn(GoogleLoginProvider.PROVIDER_ID);
     let socialPlatformProvider;

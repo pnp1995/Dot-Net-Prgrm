@@ -1,3 +1,5 @@
+import { CollaboratorComponent } from './Component/collaborator/collaborator.component';
+import { EditComponent } from './Component/edit/edit.component';
 import { NotesDisplayComponent } from './Component/notes-display/notes-display.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,14 +20,17 @@ const appRoutes: Routes = ([
   {path : 'dash',component: DashboardComponent,
 children :[
   {path : '',component:GetNotesComponent},
-  {path : 'display',component:GetNotesComponent},
+  {path : 'display',component:NotesDisplayComponent},
+  {path : 'edit' ,component:EditComponent}
 ]
 },
+
+// {path : 'Collabrator',component:CollaboratorComponent},
  {path : 'display',component:GetNotesComponent},
   {path : 'forget',component: ForgetPasswordComponent},
   {path : 'reset',component: ResetPasswordComponent},
   {path : 'notes',component:NotesComponent},
- 
+
 ]);
 @NgModule({
   imports: [
