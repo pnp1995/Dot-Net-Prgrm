@@ -1,12 +1,17 @@
 <div class="edit">
   <div style="margin-top: 90px;">
-  <input matInput  type="text" value="{{onenote.title}}" #title>
+  <!-- <input matInput  type="text" value="{{onenote.title}}" #title> -->
+  <input matInput [(ngModel)]="title">
   <br><br>
-  <input matInput  type="text" value="{{onenote.descriiption}}" #description>
+  <input matInput [(ngModel)]="description">
+  <!-- <input matInput  type="text" value="{{onenote.descriiption}}" #descriiption> -->
 </div>
+</div>
+<div>
+  <button matButton (click)="onSubmit()">Save</button>
 </div>
 <div >
-  <i class="material-icons-outlined">add_alert</i>
+  <!-- <i class="material-icons-outlined">add_alert</i>
 
   <i class="material-icons-outlined">person_add</i>
 
@@ -16,6 +21,7 @@
 
   <i class="material-icons-outlined">archive</i>
 
-  <i class="material-icons-outlined">more_vert</i>
-  <button type="submit" (click)="onSubmit(title.value, description.value)" mat-button id="SUBMIT">SAVE</button>
+   <i class="material-icons-outlined">more_vert</i> -->
+
+  <!-- <button type="submit" (click)="onSubmit()" mat-button >SAVE</button> -->
 </div>

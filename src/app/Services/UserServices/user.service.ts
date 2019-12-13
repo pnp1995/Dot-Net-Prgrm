@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
   
+  
   constructor(private http: HttpClient) { }
   link = 'https://localhost:44366/api/Account';
 
@@ -15,8 +16,8 @@ export class UserService {
     const body = {
       "FirstName": user.firstName,
       "LastName":  user.lastName,
-      "Emailid": user.email,
-      "Password": user.password,
+      "Emailid":   user.email,
+      "Password":  user.password,
     }
     console.log('test', user.firstName);
     console.log('test', user.email);
@@ -60,6 +61,9 @@ export class UserService {
    }
    getProfilepic(token, formdata) {
     return this.http.post(this.link +'/profilepic',formdata, { headers: new HttpHeaders().set('Authorization', 'Bearer ' + token) })
+  }
+  Search(token,Title) {
+   return this.http.get(this.link + '/searchlist',{ headers: new HttpHeaders().set('Authorization', 'Bearer ' + token) });
   }
 }
 

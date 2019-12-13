@@ -12,10 +12,15 @@ export class GetNotesComponent implements OnInit {
   constructor(private note: NotesServiceService) { }
 
   ngOnInit() {
+    this.getAllNotes();
+  }
+  getAllNotes()
+  { 
+    console.log(event)
     console.log(this.token.value);
     this.note.GetRequest(this.token.result).subscribe((data: any) => {
       this.displayNotes = data;
-      console.log("list", this.displayNotes);
+      console.log("all notes list", this.displayNotes);
     });
   }
 

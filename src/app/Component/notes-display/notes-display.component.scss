@@ -20,7 +20,7 @@
     align-items: center;   
   }
   .notesDisplay{
-    width: 265px;
+    width: 150px;
     flex-flow: row wrap;
     flex-grow: 1;
     margin: 8px;
@@ -34,8 +34,8 @@
   }
   .notes {
     margin-left: 0px;
-    opacity: 0.5;
-    width: 580px;
+   // opacity: 0.5;
+    width: 390px;
     margin-left: 5em;
     margin-right: 5em;
     margin-top: 0.5em;

@@ -11,15 +11,15 @@ import { Component, OnInit } from '@angular/core';
 export class NotesComponent implements OnInit {
 notes: FormGroup;
 form: NgForm;
-token = JSON.parse(localStorage.getItem('userData'));
+token = JSON.parse(localStorage.getItem('token'));
 note1 = true;
 note2 = false;
-  constructor(private note:NotesServiceService,private router:Router) { }
+  constructor(private Notes:NotesServiceService,private router:Router) { }
  
   ngOnInit() {
     this.notes = new FormGroup({
-    title: new FormControl('',[Validators.required]),
-    description: new FormControl('',[Validators.required])
+      title: new FormControl('',[Validators.required]),
+      description: new FormControl('',[Validators.required])
     });
   }
   onClick(){
@@ -27,9 +27,15 @@ note2 = false;
     this.note2 = true;
   }
   onSubmit() {
-    console.log('under submit', this.notes.value);
+    const data = {
+      "Title":this.notes.controls.title.value,
+      "Descriiption":this.notes.controls.description.value
+    }
+    console.log('under submit', data);
     console.log(this.token.result);
-    this.note.Postrequest(this.notes.value, this.token.result).subscribe(data=>{   
+    this.Notes.Postrequest(data, this.token.result).subscribe(status=>{   
+      console.log('data ..',status);
+      
     });    
 
   }

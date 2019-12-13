@@ -24,13 +24,31 @@
         <i class="material-icons-outlined">archive</i>
 
         <i class="material-icons-outlined">more_vert</i>
-
+<!-- 
         <i class="material-icons-outlined">undo</i>
 
-        <i class="material-icons-outlined">redo</i>
+        <i class="material-icons-outlined">redo</i> -->
+        
         <button type="submit" (click)="onSubmit()" mat-button id="SUBMIT">SUBMIT</button>
       </div>
     </mat-card>
   </form>
-  <app-notes-display [notes] = "displayNotes"></app-notes-display>
+
+
+
+
+ 
+
+
+  <div class="note_Main">
+      <div class="note_Child">
+          <app-notes-display [notes] = "displayNotes"></app-notes-display>
+      </div>
+      </div>
+     
+
+
+
+
+
 </div>

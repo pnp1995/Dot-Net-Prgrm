@@ -1,1 +1,5 @@
-<app-notes-display [notes] = "displayNotes"></app-notes-display>
+
+
+<div>
+<app-notes-display (event)="getAllNotes()" [notes] = "displayNotes"></app-notes-display>
+</div>

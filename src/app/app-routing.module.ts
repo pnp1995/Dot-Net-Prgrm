@@ -1,4 +1,5 @@
-import { CollaboratorComponent } from './Component/collaborator/collaborator.component';
+import { AdminComponent } from './Component/admin/admin.component';
+import { TrashComponent } from './Component/trash/trash.component';
 import { EditComponent } from './Component/edit/edit.component';
 import { NotesDisplayComponent } from './Component/notes-display/notes-display.component';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ import { ResetPasswordComponent } from './Component/reset-password/reset-passwor
 import { ForgetPasswordComponent } from './Component/forget-password/forget-password.component';
 import {NotesComponent} from './Component/notes/notes.component';
 import { GetNotesComponent } from './Component/get-notes/get-notes.component';
+import { ArchiveComponent } from './Component/archive/archive.component';
 const appRoutes: Routes = ([
   {path : 'register', component: UserRegisterComponent},
   {path : 'login', component: LoginComponent},
@@ -21,15 +23,19 @@ const appRoutes: Routes = ([
 children :[
   {path : '',component:GetNotesComponent},
   {path : 'display',component:NotesDisplayComponent},
-  {path : 'edit' ,component:EditComponent}
+  {path : 'edit' ,component:EditComponent},
+  {path : 'archive',component:ArchiveComponent},
+  {path : 'notes',component:NotesComponent},
+  {path : 'trash',component:TrashComponent}
 ]
 },
-
+{path : 'archive',component:ArchiveComponent},
 // {path : 'Collabrator',component:CollaboratorComponent},
  {path : 'display',component:GetNotesComponent},
   {path : 'forget',component: ForgetPasswordComponent},
   {path : 'reset',component: ResetPasswordComponent},
   {path : 'notes',component:NotesComponent},
+  {path : 'admin',component:AdminComponent},
 
 ]);
 @NgModule({

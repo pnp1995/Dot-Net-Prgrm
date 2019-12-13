@@ -35,8 +35,11 @@ import { CollaboratorComponent } from './Component/collaborator/collaborator.com
 import { LabelComponent } from './Component/label/label.component';
 import { ArchiveComponent } from './Component/archive/archive.component';
 import { TrashComponent } from './Component/trash/trash.component';
+import { AdminComponent } from './Component/admin/admin.component';
+import { AdminDashboardComponent } from './Component/admin-dashboard/admin-dashboard.component';
+//import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
 
-  // Config..
+//Config..
 export function getAuthServiceConfigs()  
 {
 let config = new AuthServiceConfig([
@@ -70,7 +73,9 @@ let config = new AuthServiceConfig([
     LabelComponent,
     ArchiveComponent,
     TrashComponent,
-    
+    AdminComponent,
+    AdminDashboardComponent,
+        
   ],
   imports: [
     BrowserModule,
@@ -94,7 +99,9 @@ let config = new AuthServiceConfig([
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    
+    //DragDropModule,CdkDragDrop
   ],
   entryComponents : [EditComponent,
     LabelComponent,CollaboratorComponent

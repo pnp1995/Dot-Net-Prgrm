@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { LabelService } from 'src/app/Services/Label/label.service';
 import { UserService } from 'src/app/Services/UserServices/user.service';
+import { Title } from '@angular/platform-browser';
 
 export interface DialogData {
   label: string;
@@ -54,16 +55,6 @@ export class DashboardComponent implements OnInit {
   //  console.log('The label was closed');
   //   this.label = result;
   // });
-  // listView() {
-  //   this.popup = true;
-  //   this.popup1 = false;
-  //   return this.data.viewlist(this.list);
-  // }
-  // gridView() {
-  //   this.popup = false;
-  //   this.popup1 = true;
-  //   return this.data.viewlist(false);
-  // }
   changeView() {
     this.view = !this.view;
     this.dataservice.changeMessages(this.view);
@@ -79,37 +70,33 @@ export class DashboardComponent implements OnInit {
     console.log(this.profileimage);
 
     this.profiles();
-    // console.log(event);
   }
   profiles() {
     const formData = new FormData();
-    //  this.profileimage = onFileChanged(Event)
-
     formData.append('file', this.profileimage);
     console.log("profile", formData)
-
     this.userService.getProfilepic(this.token.result, formData).subscribe((data: any) => {
-      console.log(data);   
-      
-     
-     
+      console.log(data); 
       var url = data.result.result.profilePicUpload;
       console.log('url',data);
       var userName = data.result.result.firstName + " " + data.result.result.lastName;
-      // this.userName=data.result.result.firstName + " " + data.result.result.lastName;
-        console.log('usser..>',userName);
-        
+        console.log('usser..>',userName);  
        var userEmail = data.result.result.emailid;
        console.log('emaail',userEmail);
        
       localStorage.setItem('imageUrl', url);
       localStorage.setItem('username', userName);
       localStorage.setItem('useremail', userEmail);
-    });
-   
-    
+    });   
   }
-
+  search(){
+   this.userService.Search(this.token.result,Title).subscribe((data:any) =>{
+    console.log (data);
+   });
+  }
+  signout() {
+    localStorage.clear();
+  }
 
 }
 

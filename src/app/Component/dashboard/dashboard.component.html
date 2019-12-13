@@ -14,7 +14,11 @@
         <button id="search-button" mat-icon-button style="outline: none;">
           <mat-icon matSuffix class="suffix">search</mat-icon>
         </button>
-        <input class="form-control" type="text" name="search" autocomplete="off" placeholder="search ">
+        <input class="form-control" type="text" name="search" autocomplete="off" placeholder="search "
+        (keyup)="search(item.value);" #item>
+        <button class="search-button" mat-icon-button>
+          <mat-icon matSuffix class="suffix">clear</mat-icon>
+        </button>
       </mat-card>
     </div>
     <div>
@@ -52,9 +56,9 @@
       <div class="paddingnote">
         <div class="options">
           <i class="material-icons">lightbulb_outline</i>
-          <button mat-button class="button">Notes</button>
+          <button mat-button class="button" routerLink="/dash">Notes</button>
         </div>
-        <div class="options">
+        <div class="option">
           <i class="material-icons-outlined">notifications_none</i>
           <button mat-button class="button">Reminders</button>
         </div>
@@ -75,11 +79,12 @@
       <mat-divider></mat-divider>
       <div class="options">
         <i class="material-icons-outlined">archive</i>
-        <button mat-button class="button">Archive</button>
+        <button mat-button class="button"  routerLink="/dash/archive" matTooltip="Archive">Archive</button>
       </div>
       <div class="options">
         <i class="material-icons-outlined">delete</i>
-        <button mat-button class="button">Trash</button>
+        <button mat-button class="button" routerLink="/dash/trash" matTooltip="Trash" >Trash</button>
+        
       </div>
 </div>
 
