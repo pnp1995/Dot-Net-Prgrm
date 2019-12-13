@@ -6,9 +6,12 @@
 // --------------------------------------------------------------------------------------------------------------------
 using Common.LabelModel;
 using FundooManager.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace FundooApi.Controllers
@@ -29,11 +32,13 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("add")]
+        [Authorize]
         public async Task<IActionResult> Addlabel(LabelModel labelModel)
         {
             try
             {
-                var result = await label.Add(labelModel);
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+                var result = await label.Add(labelModel,Email);
                 return this.Ok(new { result });
             }
             catch (Exception ex)
@@ -48,11 +53,13 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("update")]
+        [Authorize]
         public async Task<IActionResult> Delete(LabelModel labelModel)
         {
             try
             {
-                var result = await label.Update(labelModel);
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+                var result = await label.Update(labelModel,Email);
                 return this.Ok(new { result });
             }
             catch (Exception ex)
@@ -65,13 +72,15 @@ namespace FundooApi.Controllers
         /// </summary>
         /// <param name="Id">The identifier.</param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpDelete]
         [Route("delete")]
+        [Authorize]
         public async Task<IActionResult> Delete(int Id)
         {
             try
             {
-                var result = await label.Delete(Id);
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+                var result = await label.Delete(Id,Email);
                 return this.Ok(new { result });
             }
             catch (Exception ex)
@@ -85,9 +94,12 @@ namespace FundooApi.Controllers
         /// <param name="Email">The email.</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("get")]
-        public List <LabelModel>List(string Email)
-        {                      
+        [Route("list")]
+        [Authorize]
+        public List <LabelModel>List()
+        {
+            string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+
             var result =  label.List(Email);       
             return result;
             

@@ -16,7 +16,7 @@ namespace FundooManager.Interface
         Task<string> ForgetPassword(ForgetPasswordModel forgetPasswordModel);
         Task<string> GoogleLogin(LoginModel loginModel );
         Task<string> FacebookLogin(LoginModel loginModel);
-        string ProfilePicUpload(string Emailid, IFormFile formFile);
+        Task<UserModel> ProfilePicUpload(string Emailid, IFormFile formFile);
         Task<UserModel> FindByEmail(string email);
     }
 }

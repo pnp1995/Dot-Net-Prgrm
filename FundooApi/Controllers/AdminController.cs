@@ -39,19 +39,39 @@ namespace FundooApi.Controllers
                 return this.BadRequest(ex.Message);
             }
         }
-        //[HttpPost]
-        //[Route("adminlogin")]
-        //public async Task<IActionResult> AdminLogin(AdminLoginModel adminLoginModel)
-        //{
-        //    try
-        //    {
-        //        var result = await admin.AdminLogin(adminLoginModel);
-        //        return this.Ok(new { result });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return this.BadRequest(ex.Message);
-        //    }
-        //}
+
+        [HttpGet]
+        [Route("userstatistic")]
+        public async Task<IActionResult> UserStatistic()
+        {
+            try
+            {
+                var result = await admin.DisplayUserStatistics();
+                return Ok(new { result });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// UserDetails controller
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("userdetails")]
+        public async Task<IActionResult> UserDetails()
+        {
+            try
+            {
+                var result = await admin.DisplayUserDetails();
+                return Ok(new { result });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

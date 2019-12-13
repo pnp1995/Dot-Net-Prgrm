@@ -23,7 +23,8 @@ namespace FundooRepository.FundooInterface
         Task Restore(int Id);
         Task RestoreAll(string Email);
         Task Reminder(int Id, string Reminder);
-        Task Colour(int Id, string Colour);
+        Task Colour(int Id, string Colour, string Email);
         string ImageUpload(int Id, IFormFile formFile);
+        List<NotesModel> Search(string Email, string letters);
     }
 }

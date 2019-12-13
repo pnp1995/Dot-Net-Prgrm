@@ -56,11 +56,18 @@ namespace Common.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         /// <summary>
+        /// Gets or sets the total notes.
+        /// </summary>
+        /// <value>
+        /// The total notes.
+        /// </value>
+        public int TotalNotes { get; set; }
+        /// <summary>
         /// Gets or sets the type of the card.
         /// </summary>
         /// <value>
         /// The type of the card.
-        /// </value>
+        /// </value>        
         public string CardType
         {
             set { this.cardtype = value; }

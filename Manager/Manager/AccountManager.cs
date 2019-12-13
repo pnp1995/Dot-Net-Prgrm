@@ -109,12 +109,12 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
-        public string ProfilePicUpload(string Emailid, IFormFile formFile)
+        public Task<UserModel> ProfilePicUpload(string Emailid, IFormFile file)
         {
             try
             {
-                accountRepo.ProfilePicUpload(Emailid, formFile);
-                return "Image upload Successfully";
+                var res = accountRepo.ProfilePicUpload(Emailid, file);
+                return res;
             }
             catch (Exception ex)
             {

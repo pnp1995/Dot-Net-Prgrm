@@ -72,7 +72,7 @@ namespace FundooApi.Controllers
         /// </summary>
         /// <param name="Id">The identifier.</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpDelete]
         [Route("delete")]
         public async Task<IActionResult> Delete(int Id)
         {
@@ -98,5 +98,6 @@ namespace FundooApi.Controllers
            var result =  collaborator.List(Noteid);
             return result;
         }
+
     }
 }

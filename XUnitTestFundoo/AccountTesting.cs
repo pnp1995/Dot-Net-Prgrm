@@ -2,11 +2,10 @@
 using FundooApi.Controllers;
 using FundooManager.Interface;
 using Moq;
-using System;
 using Xunit;
 namespace XUnitTestFundoo
 {
-   public class AccountTesting
+    public class AccountTesting
     {
         [Fact]
         public void Registration()

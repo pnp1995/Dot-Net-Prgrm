@@ -18,7 +18,7 @@ namespace FundooRepository.FundooInterface
         object GeneratePasswordReset(ResetPasswordModel resetPasswordModel);
         Task<UserModel> GoogleLoginAsync(LoginModel loginModel);
         Task<UserModel> FacebookLoginAsync(LoginModel loginModel);
-        string ProfilePicUpload(string Emailid, IFormFile formFile);
+        Task<UserModel> ProfilePicUpload(string Emailid, IFormFile formFile);
         Task<UserModel> FindByEmail(string email);
     }
 }

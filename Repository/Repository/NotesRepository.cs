@@ -22,25 +22,31 @@ namespace FundooRepository.Repository
         }
         public Task AddNotes(NotesModel notesModel,string email)
         {
-            notesModel.Email = email;
-
-            NotesModel notesModel1 = new NotesModel()
+            var result = userContext.UserDetail.Where(p => p.Emailid == email).FirstOrDefault();
+            if (result != null)
             {
-                Email = notesModel.Email,
-                Id = notesModel.Id,
-                Title = notesModel.Title,
-                Descriiption = notesModel.Descriiption,
-                Image = notesModel.Image,
-                Reminder = notesModel.Reminder,
-                Colour = null,
-                Archive = notesModel.Archive,
-                Trash = notesModel.Trash,
-                Pin = false,
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now,
-            };
-            userContext.NotesDetail.Add(notesModel);
-            return Task.Run(() => userContext.SaveChanges());
+                notesModel.Email = email;
+
+                NotesModel notesModel1 = new NotesModel()
+                {
+                    Email = notesModel.Email,
+                    Id = notesModel.Id,
+                    Title = notesModel.Title,
+                    Descriiption = notesModel.Descriiption,
+                    Image = notesModel.Image,
+                    Reminder = notesModel.Reminder,
+                    Colour = notesModel.Colour,
+                    Archive = notesModel.Archive,
+                    Trash = notesModel.Trash,
+                    Pin = false,
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now,
+                };
+                userContext.NotesDetail.Add(notesModel);
+                userContext.SaveChanges();
+                result.TotalNotes++;
+                }
+                return Task.Run(() => true);
         }
         public Task UpdateNotes(NotesModel notesModel, string email)
             {
@@ -82,7 +88,7 @@ namespace FundooRepository.Repository
             bool note = userContext.NotesDetail.Any(p => p.Email == Email);
             if (note)
             {
-                return userContext.NotesDetail.Where(p => p.Email == Email).ToList();
+                return userContext.NotesDetail.Where(p => p.Email == Email & p.Archive!=true & p.Trash!=true).ToList();
             }
             else
             {
@@ -192,14 +198,17 @@ namespace FundooRepository.Repository
             var result = userContext.NotesDetail.Where(i => i.Id == Id).SingleOrDefault();
             if (result != null)
             {
+
                 result.Reminder = Reminder;
+               //userContext.NotesDetail.Update(result);
+
                 return Task.Run(() => userContext.SaveChanges());
 
             }
             return null;
         }
-        public Task Colour(int Id, string Colour)
-        {
+        public Task Colour(int Id, string Colour, string Email)
+       {
             var result = userContext.NotesDetail.Where(i => i.Id == Id).SingleOrDefault();
             if (result != null)
             {
@@ -224,6 +233,16 @@ namespace FundooRepository.Repository
             result.Image = data.Uri.ToString();
             userContext.SaveChanges();
             return result.Image;
+        }
+
+        public List<NotesModel> Search(string Email, string letters)
+        {
+            var email = userContext.NotesDetail.Where(p => p.Email == Email).FirstOrDefault();
+            if (email != null)
+            {
+                return userContext.NotesDetail.Where(p => (p.Email == Email) && (p.Title.Contains(letters))).ToList();/* (p.Archive == true) && (p.Trash == false) && */
+            }
+            return null;
         }
     }
 }

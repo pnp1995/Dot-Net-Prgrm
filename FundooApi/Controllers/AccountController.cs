@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace FundooApi.Controllers
@@ -59,6 +60,7 @@ namespace FundooApi.Controllers
         {
             try
             {
+
                 var result = await account.Login(loginModel);
                 return this.Ok(new { result });
             }
@@ -76,7 +78,7 @@ namespace FundooApi.Controllers
         public async Task<object> Find()
         {
 
-            string Email = User.Claims.First(c => c.Type == "Emailid").Value;
+            string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
             var result = await account.FindByEmail(Email);
             return new
             {
@@ -126,7 +128,7 @@ namespace FundooApi.Controllers
                     return this.BadRequest();
                 }
             }
-            catch (Exception ex)
+             catch (Exception ex)
             {
                 return this.BadRequest(ex.Message);
             }
@@ -187,15 +189,17 @@ namespace FundooApi.Controllers
         /// Profiles the pic upload.
         /// </summary>
         /// <param name="Emailid">The emailid.</param>
-        /// <param name="formFile">The form file.</param>
+        /// <param name="file">The form file.</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("profilepic")]
-        public IActionResult ProfilePicUpload(string Emailid, IFormFile formFile)
+        [Authorize]
+        public IActionResult ProfilePicUpload(IFormFile file)
         {
             try
             {
-                var result = account.ProfilePicUpload(Emailid, formFile);
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+                var result = account.ProfilePicUpload(Email, file);
                 return Ok(new { result });
             }
             catch (Exception ex)

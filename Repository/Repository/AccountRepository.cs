@@ -49,7 +49,8 @@ namespace FundooRepository.Repository
                 Emailid = userModel.Emailid,
                 Password = userModel.Password,
                 CardType = userModel.CardType,
-                ProfilePicUpload =userModel.ProfilePicUpload
+                ProfilePicUpload =userModel.ProfilePicUpload,
+                TotalNotes =userModel.TotalNotes
             };
             userContext.UserDetail.Add(userModel);
             return Task.Run(() => userContext.SaveChanges());
@@ -64,9 +65,9 @@ namespace FundooRepository.Repository
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                       new Claim("Emailid",result.Emailid)
+                       new Claim(ClaimTypes.Email,result.Emailid)
                     }),
-                    Expires = DateTime.UtcNow.AddDays(2),
+                    Expires = DateTime.UtcNow.AddDays(20),
                     SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(settings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
                 };
@@ -91,8 +92,8 @@ namespace FundooRepository.Repository
         {
             try
             {
-                var user = userContext.UserDetail.Where(p => p.Password == resetPasswordModel.Password && p.Emailid == resetPasswordModel.Emailid).Single();
-                if (user != null)
+                var user = userContext.UserDetail.Where(p => p.Emailid == resetPasswordModel.Emailid).Single();
+                if (user != null && resetPasswordModel.Password == resetPasswordModel.ConfirmPassword)
                 {
                     var result = this.GeneratePasswordReset(resetPasswordModel);
                     return user;
@@ -121,7 +122,7 @@ namespace FundooRepository.Repository
         public object GeneratePasswordReset(ResetPasswordModel resetPasswordModel)
         {
             var result = userContext.UserDetail.Where(p => p.Emailid == resetPasswordModel.Emailid).FirstOrDefault();
-            result.Password = resetPasswordModel.NewPassword;
+            result.Password = resetPasswordModel.ConfirmPassword;
             userContext.Update(result);
             return Task.Run(() => userContext.SaveChanges());
             throw new NotImplementedException();
@@ -137,7 +138,7 @@ namespace FundooRepository.Repository
                     var fromPassword = "pnp@1995";
                     var ToAdress = new MailAddress(forgetPasswordModel.Emailid);
                     string Subject = "Reset Password";
-                    string Body = "To reset your password click on link+";
+                    string Body = "To reset your password click on link+ http://localhost:4200/reset";
                     SmtpClient smtp = new SmtpClient
                     {
                         Host = "smtp.gmail.com",
@@ -205,10 +206,10 @@ namespace FundooRepository.Repository
                 throw new Exception(ex.Message);
             }
         }
-        public string ProfilePicUpload(string Emailid, IFormFile formFile)
+        public Task<UserModel> ProfilePicUpload(string Emailid, IFormFile file)
         {
-            var path = formFile.OpenReadStream();
-            var fileName = formFile.FileName;
+            var path = file.OpenReadStream();
+            var fileName = file.FileName;
             CloudinaryDotNet.Account cloudinary = new CloudinaryDotNet.Account("dtddmoers", "745684864855497", "b4WAINSfnC1hJPAyikC525T3HUM");
             CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(cloudinary);
             var Uploadfile = new ImageUploadParams()
@@ -219,7 +220,10 @@ namespace FundooRepository.Repository
             var result = userContext.UserDetail.Where(i => i.Emailid == Emailid).SingleOrDefault();
             result.ProfilePicUpload = data.Uri.ToString();
             userContext.SaveChanges();
-            return result.ProfilePicUpload;
+            //return result.ToString();
+            //var profileUrl = result.ProfilePicUpload;
+            //return profileUrl;
+            return Task.Run(() => result);
         }
     }     
 }

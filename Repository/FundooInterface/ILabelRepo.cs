@@ -8,9 +8,9 @@ namespace FundooRepository.FundooInterface
 {
     public interface ILabelRepo
     { 
-      Task Addlabel(LabelModel labelModel);
-        Task UpdateLabel(LabelModel labelModel);
-        Task DeleteLabel(int Id);
-        List<LabelModel> ListofLabel(string Email);
+      Task Addlabel(LabelModel labelModel,String  email);
+        Task UpdateLabel(LabelModel labelModel, String email);
+        Task DeleteLabel(int Id, String email);
+        List<LabelModel> ListofLabel(String Email);
     }
 }

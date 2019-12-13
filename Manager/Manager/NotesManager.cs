@@ -173,11 +173,11 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<string> Colour(int Id, string Colour)
+        public async Task<string> Colour(int Id, string Colour, string Email)
         {
             try
             {
-                await notesRepo.Reminder(Id, Colour);
+                await notesRepo.Colour(Id, Colour, Email);
                 return "Colour ADDED Successfully";
             }
             catch (Exception ex)
@@ -197,5 +197,11 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
+        public List<NotesModel> Searched(string Email,string letter)
+        {
+            return notesRepo.Search(Email, letter);
+        }
+
+        
     }
 }

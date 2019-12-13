@@ -13,12 +13,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
+using System.Security.Claims;
 
 namespace FundooApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class NotesController : ControllerBase
     {
         /// <summary>
@@ -40,11 +41,12 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("add")]
+        [Authorize]
         public async Task<IActionResult> Add(NotesModel notesModel)
         {
             try
             {
-                string Email = User.Claims.First(c => c.Type == "Emailid").Value;
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
                 var result = await notes.Add(notesModel, Email);
                 return this.Ok(new { result });
             }
@@ -58,13 +60,14 @@ namespace FundooApi.Controllers
         /// </summary>
         /// <param name="notesModel">The notes model.</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPut]
         [Route("update")]
+        [Authorize]
         public async Task<IActionResult> Update(NotesModel notesModel)
         {
             try
             {
-                string Email = User.Claims.First(c => c.Type == "Emailid").Value;
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
                 var result = await notes.Update(notesModel, Email);
                 return this.Ok(new { result });
             }
@@ -80,11 +83,12 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("delete")]
+        [Authorize]
         public async Task<IActionResult> Delete(int Id)
         {
             try
             {
-                string Email = User.Claims.First(c => c.Type == "Emailid").Value;
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
                 var result = await notes.Delete(Id, Email);
                 return this.Ok(new { result });
             }
@@ -99,9 +103,10 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("list")]
+        [Authorize]
         public List<NotesModel> List()
         {
-            string Email = User.Claims.First(c => c.Type == "Emailid").Value;
+            string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
 
             var result = this.notes.List(Email);
                 return result;
@@ -118,6 +123,7 @@ namespace FundooApi.Controllers
         {
             try
             {
+                //string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
                 var result = await notes.Archive(Id);
                 return this.Ok(new { result });
             }
@@ -137,6 +143,7 @@ namespace FundooApi.Controllers
         {
             try
             {
+                //string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
                 var result = await notes.UnArchive(Id);
                 return Ok(new { result });
             }
@@ -152,9 +159,10 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("archivelist")]
-        public List<NotesModel> ArchiveList(string Email)
+        public List<NotesModel> ArchiveList()
         {
             {
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
                 var result = this.notes.ArchiveList(Email);
                 return result;
             }
@@ -218,9 +226,10 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("trashlist")]
-        public List<NotesModel> TrashList(string Email)
+        public List<NotesModel> TrashList()
         {
             {
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
                 var result = this.notes.TrashList(Email);
                 return result;
             }
@@ -232,6 +241,7 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("restore")]
+        
         public async Task<IActionResult> Restore(int Id)
         {
             try
@@ -251,10 +261,12 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("restoreall")]
-        public async Task<IActionResult> RestoreAll(string Email)
+        public async Task<IActionResult> RestoreAll()
         {
             try
             {
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+
                 var result = await notes.RestoreAll(Email);
                 return Ok(new { result });
             }
@@ -273,6 +285,7 @@ namespace FundooApi.Controllers
         [Route("reminder")]
         public async Task<IActionResult> Reminder(int Id,string Reminder)
         {
+          
             try
             {
                 var result = await notes.Reminder(Id, Reminder);
@@ -291,11 +304,12 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("colour")]
-        public async Task<IActionResult> Colour(int Id, string Colour)
+        public async Task<IActionResult> Colour(NotesModel notesModel)
         {
             try
             {
-                var result = await notes.Colour(Id, Colour);
+                string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+                var result = await notes.Colour(notesModel.Id, notesModel.Colour, Email);
                 return Ok(new { result });
             }
             catch (Exception ex)
@@ -309,7 +323,7 @@ namespace FundooApi.Controllers
         /// <param name="Id">The identifier.</param>
         /// <param name="formFile">The form file.</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("imageupload")]
         public IActionResult ImageUpload(int Id, IFormFile formFile)
         {
@@ -322,6 +336,15 @@ namespace FundooApi.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+        [HttpGet]
+        [Route("searchlist")]
+        public List<NotesModel> SearchListing(string letters)
+        {
+            //Here email is extracted from generated token with the help of claim
+            string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
+            var result = notes.Searched(Email, letters);
+            return result;
         }
     }
 }

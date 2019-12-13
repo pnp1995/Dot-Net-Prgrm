@@ -99,6 +99,8 @@ namespace FundooRepository.Migrations
 
                     b.Property<string>("ProfilePicUpload");
 
+                    b.Property<int>("TotalNotes");
+
                     b.HasKey("Emailid");
 
                     b.ToTable("UserDetail");

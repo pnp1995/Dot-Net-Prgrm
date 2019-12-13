@@ -15,11 +15,11 @@ namespace FundooManager.Manager
         {
             this.labelRepo =labelRepo;
         }
-        public async Task<string>Add(LabelModel labelModel)
+        public async Task<string>Add(LabelModel labelModel,String Email)
         {
             try
             {
-                await this.labelRepo.Addlabel(labelModel);
+                await this.labelRepo.Addlabel(labelModel,Email);
                 return "Added Successfully";
             }
             catch (Exception ex)
@@ -27,11 +27,11 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<string>Update(LabelModel labelModel)
+        public async Task<string>Update(LabelModel labelModel,String Email)
         {
             try
             {
-                await this.labelRepo.UpdateLabel(labelModel);
+                await this.labelRepo.UpdateLabel(labelModel,Email);
                 return "Update Successfully";
             }
             catch(Exception ex)
@@ -39,11 +39,11 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<string>Delete(int Id)
+        public async Task<string>Delete(int Id,String Email)
         {
             try
             {
-                await this.labelRepo.DeleteLabel(Id);
+                await this.labelRepo.DeleteLabel(Id, Email);
                 return "Delete Successfully";
             }
             catch(Exception ex)

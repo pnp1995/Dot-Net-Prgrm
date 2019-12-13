@@ -1,4 +1,5 @@
 ﻿using Common.AdminModel;
+using Common.Models;
 using FundooManager.Interface;
 using FundooRepository.FundooInterface;
 using System;
@@ -27,6 +28,20 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<List<AdminModel>> DisplayUserStatistics()
+        {
+            return await adminRepo.DisplayUserDetails();
+        }
+         public async Task<List<UserModel>> DisplayUserDetails()
+        {
+            return await adminRepo.DisplayUsers();
+        }
+
+
+
+
+
         //public async Task<string> AdminLogin(AdminLoginModel adminLoginModel)
         //{
         //    try
