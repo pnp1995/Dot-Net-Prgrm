@@ -17,7 +17,7 @@ export class NotesServiceService {
   GetRequest(token) {
     return this.http.get(this.link + '/list', { headers: new HttpHeaders().set('Authorization', 'Bearer ' + token) });
   }
-  putrequest(id, date, token) {
+  putrequest(id, date) {
     console.log(date);
     return this.http.put(this.link + '/reminder?Reminder=' + date + '&Id=' + id, null);
   }

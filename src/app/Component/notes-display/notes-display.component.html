@@ -1,5 +1,4 @@
-<div fxLayout="{{view}}">
-  
+<div fxLayout="{{view}}"> 
   <mat-card class="card"  [ngStyle]="{'background':note.colour}" cdkDrag *ngFor="let note of notes" 
      [ngClass]="{'notesDisplay':flag==true,'notes':flag==false}">
     <div>
@@ -13,14 +12,23 @@
         <br>
         <span> {{note.descriiption}} </span>
       </div>
+  
+<div *ngIf="note.reminder">
+  <mat-chip-list class = "chip" >
+      <mat-chip style="background-color:rgba(0,0,0,0.1); margin-bottom: 2%;">
+      <img src="../../../assets/clock.svg">{{note.reminder | date:'short'}}
+      <mat-icon matChipRemove (click)="removeReminder(note)" >cancel</mat-icon>
+      </mat-chip>
+  </mat-chip-list>
 
+</div>
       <div class="notes_icon" *ngIf="!trash">
         <i class="material-icons-outlined" [matMenuTriggerFor]="menu" matTooltip="Remind Me">add_alert</i>
         <mat-menu #menu="matMenu" [overlapTrigger]="false">
-          <button mat-menu-item>Reminder : </button>
-          <button mat-menu-item>Later Today</button>
-          <button mat-menu-item>Later Tomorrow</button>
-          <button mat-menu-item>Next Week</button>
+          <button mat-menu-item >Reminder : </button>
+          <button mat-menu-item (click)="onLater(note.id)">Later Today</button>
+          <button mat-menu-item (click)="onTommorow(note.id)">Later Tomorrow</button>
+          <button mat-menu-item (click)="onNext(note.id)">Next Week</button>
           <button mat-menu-item>Picker
             <mat-form-field>
               <input matInput [matDatepicker]="picker" name="date" [(ngModel)]="date" placeholder="Choose a date"

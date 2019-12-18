@@ -37,6 +37,12 @@ import { ArchiveComponent } from './Component/archive/archive.component';
 import { TrashComponent } from './Component/trash/trash.component';
 import { AdminComponent } from './Component/admin/admin.component';
 import { AdminDashboardComponent } from './Component/admin-dashboard/admin-dashboard.component';
+import { AdminLoginComponent } from './Component/admin-login/admin-login.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 //import { DragDropModule, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 //Config..
@@ -75,6 +81,7 @@ let config = new AuthServiceConfig([
     TrashComponent,
     AdminComponent,
     AdminDashboardComponent,
+    AdminLoginComponent,
         
   ],
   imports: [
@@ -100,7 +107,9 @@ let config = new AuthServiceConfig([
     MatNativeDateModule,
     MatDialogModule,
     MatTooltipModule,
-    
+    MatChipsModule,MatChipsModule,
+    MatTableModule,MatTabsModule,
+    MatPaginatorModule
     //DragDropModule,CdkDragDrop
   ],
   entryComponents : [EditComponent,

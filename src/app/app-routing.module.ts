@@ -1,3 +1,5 @@
+import { AdminLoginComponent } from './Component/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './Component/admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './Component/admin/admin.component';
 import { TrashComponent } from './Component/trash/trash.component';
 import { EditComponent } from './Component/edit/edit.component';
@@ -36,6 +38,8 @@ children :[
   {path : 'reset',component: ResetPasswordComponent},
   {path : 'notes',component:NotesComponent},
   {path : 'admin',component:AdminComponent},
+  {path : 'admindash', component:AdminDashboardComponent},
+  {path : 'loginadmin',component:AdminLoginComponent}
 
 ]);
 @NgModule({

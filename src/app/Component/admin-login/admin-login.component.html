@@ -1,0 +1,22 @@
+<mat-card class="first">
+  <form [formGroup]='login'>
+    <h1>
+      Welcome To Fundoo Admin Login
+    </h1>
+    <div>
+      <mat-form-field class="email" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder=" " type="text" formControlName="email" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="pass" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder=" " type="password" formControlName="password" />
+      </mat-form-field>
+    </div>
+    <div class="button">
+      <button  color="primary" (click)="onlogin()" mat-raised-button>SIGIN</button>
+    </div>
+  </form>
+</mat-card>

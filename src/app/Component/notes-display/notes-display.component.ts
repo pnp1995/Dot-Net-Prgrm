@@ -53,10 +53,39 @@ export class NotesDisplayComponent implements OnInit {
       
     });
   }
+  onLater(id)
+  {
+    var d=new Date();
+    d.setHours(8,0,0);
+    this.Notes.putrequest(id,d.toString()).subscribe( response => {
+      console.log('dataa from back end',response);
+      this.event.emit([]);
+    })
+  }
+  onTommorow(id)
+  {
+    var d=new Date();
+    d.setDate(d.getDate()+1);
+    d.setHours(8,0,0);
+    this.Notes.putrequest(id,d.toString()).subscribe( response => {
+      console.log('dataa from back end',response);
+      this.event.emit([]);
+    })
+  }
+  onNext(id)
+  {
+    var d=new Date();
+    d.setDate(d.getDate()+7);
+    d.setHours(8,0,0);
+    this.Notes.putrequest(id,d.toString()).subscribe( response => {
+      console.log('dataa from back end',response);
+      this.event.emit([]);
+    })
+  }
 
   setReminder(id) {
     console.log('set reminde', this.date);
-    this.Notes.putrequest(id, this.date, this.token).subscribe((data: any) => {
+    this.Notes.putrequest(id, this.date).subscribe((data: any) => {
       this.Notes = data;
       this.event.emit([]);
     })

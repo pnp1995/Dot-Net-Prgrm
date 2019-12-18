@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
     });
   }
   onlogin(){
-    this.router.navigate(['login'])
+    this.router.navigate(['loginadmin'])
   }
   onSubmit(){
     {
