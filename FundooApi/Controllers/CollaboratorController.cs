@@ -36,7 +36,7 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("add")]
-        public async Task<IActionResult> Add(CollaboratorModel collaboratorModel)
+        public async Task<IActionResult> Add(CollaboratorModels collaboratorModel)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("update")]
-        public async Task<IActionResult> Update(CollaboratorModel collaboratorModel)
+        public async Task<IActionResult> Update(CollaboratorModels collaboratorModel)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace FundooApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("list")]
-        public  List<CollaboratorModel> List(int Noteid)
+        public  List<CollaboratorModels> List(int Noteid)
         {
            var result =  collaborator.List(Noteid);
             return result;

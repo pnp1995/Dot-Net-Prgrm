@@ -33,7 +33,7 @@ namespace FundooApi.Controllers
         [HttpPost]
         [Route("add")]
         [Authorize]
-        public async Task<IActionResult> Addlabel(LabelModel labelModel)
+        public async Task<IActionResult> Addlabel(LabelModels labelModel)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace FundooApi.Controllers
         [HttpPut]
         [Route("update")]
         [Authorize]
-        public async Task<IActionResult> Delete(LabelModel labelModel)
+        public async Task<IActionResult> Delete(LabelModels labelModel)
         {
             try
             {
@@ -96,7 +96,7 @@ namespace FundooApi.Controllers
         [HttpGet]
         [Route("list")]
         [Authorize]
-        public List <LabelModel>List()
+        public List <LabelModels>List()
         {
             string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
 

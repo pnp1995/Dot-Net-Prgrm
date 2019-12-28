@@ -8,10 +8,10 @@ namespace FundooManager.Interface
 {
     public interface ICollaborator
     {
-     Task<string> AddCollaborator(CollaboratorModel collaboratorModel);
-     Task<string> UpdateCollaborator(CollaboratorModel collaboratorModel);
+     Task<string> AddCollaborator(CollaboratorModels collaboratorModel);
+     Task<string> UpdateCollaborator(CollaboratorModels collaboratorModel);
     Task<string> DeleteCollaborator(int Id);
-    List<CollaboratorModel> List(int Noteid);
+    List<CollaboratorModels> List(int Noteid);
 
     }
 }

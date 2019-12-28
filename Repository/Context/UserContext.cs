@@ -35,14 +35,14 @@ namespace FundooRepository.Context
         /// <value>
         /// The label detail.
         /// </value>
-        public DbSet<LabelModel> LabelDetail { get; set; }
+        public DbSet<LabelModels> LabelDetail { get; set; }
         /// <summary>
         /// Gets or sets the collaborator detail.
         /// </summary>
         /// <value>
         /// The collaborator detail.
         /// </value>
-        public DbSet<CollaboratorModel> CollaboratorDetail { get; set; }
+        public DbSet<CollaboratorModels> CollaboratorDetail { get; set; }
         /// <summary>
         /// Gets or sets the admin detail.
         /// </summary>

@@ -12,6 +12,8 @@ namespace FundooRepository.FundooInterface
     {
         Task AddAdmin(AdminLoginModel adminLoginModel);
         Task AdminLogin(UserModel user,DateTime date);
+
+        bool LogInAdmin(string Email, string Password);
         Task<IdentityUser> FindByEmailAsync(string email);
         Task<List<AdminModel>> DisplayUserDetails();
         Task<List<UserModel>> DisplayUsers();

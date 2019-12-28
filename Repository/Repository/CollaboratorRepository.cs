@@ -16,9 +16,9 @@ namespace FundooRepository.Repository
         {
             this.userContext = userContext;
         }
-        public Task AddCollaborator(CollaboratorModel collaboratorModel)
+        public Task AddCollaborator(CollaboratorModels collaboratorModel)
         {   
-            CollaboratorModel collaboratorModel1 = new CollaboratorModel()
+            CollaboratorModels collaboratorModel1 = new CollaboratorModels()
             {
                 Id = collaboratorModel.Id,
                 SenderEmail = collaboratorModel.SenderEmail,
@@ -28,9 +28,9 @@ namespace FundooRepository.Repository
             userContext.CollaboratorDetail.Add(collaboratorModel);
             return Task.Run(() => userContext.SaveChanges());
         }
-        public Task UpdateCollaborator(CollaboratorModel collaboratorModel)
+        public Task UpdateCollaborator(CollaboratorModels collaboratorModel)
         {
-        CollaboratorModel collaborator  = userContext.CollaboratorDetail.Where(p => p.Id == collaboratorModel.Id).FirstOrDefault();
+        CollaboratorModels collaborator  = userContext.CollaboratorDetail.Where(p => p.Id == collaboratorModel.Id).FirstOrDefault();
             if (collaborator != null)
             {
                 collaborator.SenderEmail = collaboratorModel.SenderEmail;
@@ -42,14 +42,14 @@ namespace FundooRepository.Repository
         }
         public Task DeleteCollaborator(int Id)
         {
-            CollaboratorModel collaborator = userContext.CollaboratorDetail.Where(p => p.Id == Id).FirstOrDefault();
+            CollaboratorModels collaborator = userContext.CollaboratorDetail.Where(p => p.Id == Id).FirstOrDefault();
             if (collaborator != null)
             {
                 userContext.CollaboratorDetail.Remove(collaborator);
             }
              return Task.Run(() => userContext.SaveChanges());          
         }
-        public List<CollaboratorModel> ListCollaborator(int Noteid)
+        public List<CollaboratorModels> ListCollaborator(int Noteid)
         {
             bool note = userContext.CollaboratorDetail.Any(p => p.Noteid == Noteid);
             if (note)

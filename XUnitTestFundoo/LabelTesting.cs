@@ -13,7 +13,7 @@ namespace XUnitTestFundoo
         {
             var service = new Mock<ILabel>();
             var controller = new LabelController(service.Object);
-            var Add = new LabelModel()
+            var Add = new LabelModels()
             {
                 
                 Email = "pnp5657@gmail.com",
@@ -28,7 +28,7 @@ namespace XUnitTestFundoo
         {
             var service = new Mock<ILabel>();
             var controller = new LabelController(service.Object);
-            var Update = new LabelModel()
+            var Update = new LabelModels()
             {
 
                 Email = "pnp5657@gmail.com",
@@ -43,7 +43,7 @@ namespace XUnitTestFundoo
         {
             var service = new Mock<ILabel>();
             var controller = new LabelController(service.Object);
-            var Delete = new LabelModel()
+            var Delete = new LabelModels()
             {             
                 Id = 12,
                 Label = "pnp"

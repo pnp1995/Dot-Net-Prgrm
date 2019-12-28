@@ -16,7 +16,7 @@ namespace FundooManager.Manager
         {
             this.collaboratorRepo = collaboratorRepo;
         }
-        public async Task<string> AddCollaborator(CollaboratorModel collaboratorModel)
+        public async Task<string> AddCollaborator(CollaboratorModels collaboratorModel)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<string> UpdateCollaborator(CollaboratorModel collaboratorModel)
+        public async Task<string> UpdateCollaborator(CollaboratorModels collaboratorModel)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
-        public  List<CollaboratorModel> List(int Noteid)
+        public  List<CollaboratorModels> List(int Noteid)
         {
             try
             {

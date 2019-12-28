@@ -8,9 +8,9 @@ namespace FundooRepository.FundooInterface
 {
     public interface ICollaboratorRepo
     {
-        Task AddCollaborator(CollaboratorModel collaboratorModel);
-        Task UpdateCollaborator(CollaboratorModel collaboratorModel);
+        Task AddCollaborator(CollaboratorModels collaboratorModel);
+        Task UpdateCollaborator(CollaboratorModels collaboratorModel);
         Task DeleteCollaborator(int Id);
-        List<CollaboratorModel> ListCollaborator(int Noteid);
+        List<CollaboratorModels> ListCollaborator(int Noteid);
     }
 }

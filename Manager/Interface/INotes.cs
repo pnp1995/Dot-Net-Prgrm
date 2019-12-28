@@ -12,7 +12,7 @@ namespace FundooManager.Interface
         Task<string> Add(NotesModel notesModel,string email);
         Task<string> Update(NotesModel notesModel, string email);
         Task<string> Delete(int Id,string Email);
-        List<NotesModel> List(string Email);
+        List<NotesViewModel> List(string Email);
         Task<string> Archive(int Id);
         Task<string> UnArchive(int Id);
         List<NotesModel> ArchiveList(string Email);
@@ -23,6 +23,7 @@ namespace FundooManager.Interface
         Task<string> Restore(int Id);
         Task<string> RestoreAll(string Email);
         Task<string> Reminder(int Id, string Reminder);
+        Task<string> RemoveReminder(int Id, string Reminder);
         Task<string> Colour(int Id, string Colour, string Email);
         string ImageUpload(int Id, IFormFile formFile);
         List<NotesModel> Searched(string email, string letters);

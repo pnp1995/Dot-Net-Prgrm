@@ -104,7 +104,7 @@ namespace FundooApi.Controllers
         [HttpGet]
         [Route("list")]
         [Authorize]
-        public List<NotesModel> List()
+        public List<NotesViewModel> List()
         {
             string Email = User.Claims.First(c => c.Type == ClaimTypes.Email).Value;
 
@@ -296,6 +296,27 @@ namespace FundooApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        /// <summary>
+        /// Removes the reminder.
+        /// </summary>
+        /// <param name="Id">The identifier.</param>
+        /// <param name="Reminder">The reminder.</param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("removereminder")]
+        public async Task<IActionResult> RemoveReminder(int Id, string Reminder)
+        {
+            try
+            {
+                var result = await notes.RemoveReminder(Id, Reminder);
+                return Ok(new { result });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Colours the specified identifier.
         /// </summary>

@@ -54,7 +54,7 @@ namespace FundooManager.Manager
 
             }
         }
-        public List<NotesModel> List(string Email)
+        public List<NotesViewModel> List(string Email)
         {
             try
             {
@@ -173,6 +173,18 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<string> RemoveReminder(int Id,string Reminder)
+        {
+            try
+            {
+                await notesRepo.RemoveReminder(Id, Reminder);
+                return "Reminder remove successfully";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+                    }
         public async Task<string> Colour(int Id, string Colour, string Email)
         {
             try

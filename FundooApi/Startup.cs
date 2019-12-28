@@ -100,18 +100,6 @@ namespace FundooApi
                     ValidateIssuer = false, 
                     ValidateAudience = false };
 
-                //AddJwtBearer(x =>
-                //{
-                //    x.RequireHttpsMetadata = false;
-                //    x.SaveToken = true;
-                //    x.TokenValidationParameters = new TokenValidationParameters
-                //    {
-                //        ValidateIssuerSigningKey = true,
-                //        IssuerSigningKey = new SymmetricSecurityKey(Key),
-                //        ValidateIssuer = false,
-                //        ValidateAudience = false,
-                //        ClockSkew = TimeSpan.Zero
-                //    };
             });
            
         }

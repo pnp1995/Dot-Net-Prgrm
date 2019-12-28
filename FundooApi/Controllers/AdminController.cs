@@ -39,11 +39,25 @@ namespace FundooApi.Controllers
                 return this.BadRequest(ex.Message);
             }
         }
+        [HttpPost]
+        [Route("loginadmin")]
+        public async Task<IActionResult> Logging(AdminLoginModel adminLoginModel)
+        {
+            try
+            {
+                var result = admin.LogInAdmin(adminLoginModel.Email, adminLoginModel.Password);
+                return Ok(new { result });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpGet]
         [Route("userstatistic")]
         public async Task<IActionResult> UserStatistic()
-        {
+            {
             try
             {
                 var result = await admin.DisplayUserStatistics();

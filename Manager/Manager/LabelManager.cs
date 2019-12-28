@@ -15,7 +15,7 @@ namespace FundooManager.Manager
         {
             this.labelRepo =labelRepo;
         }
-        public async Task<string>Add(LabelModel labelModel,String Email)
+        public async Task<string>Add(LabelModels labelModel,String Email)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<string>Update(LabelModel labelModel,String Email)
+        public async Task<string>Update(LabelModels labelModel,String Email)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
-        public List<LabelModel>List(string Email)
+        public List<LabelModels>List(string Email)
         {
             try
             {

@@ -8,9 +8,9 @@ namespace FundooManager.Interface
 {
     public  interface ILabel
     {
-        Task<string> Add(LabelModel labelModel,String Email);
-        Task<string> Update(LabelModel labelModel,String Email);
+        Task<string> Add(LabelModels labelModel,String Email);
+        Task<string> Update(LabelModels labelModel,String Email);
         Task<string> Delete(int Id,String Email);
-        List<LabelModel> List(string Email);
+        List<LabelModels> List(string Email);
     }
 }

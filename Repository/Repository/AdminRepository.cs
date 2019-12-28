@@ -41,16 +41,17 @@ namespace FundooRepository.Repository
             };
             userContext.AdminDetail.Add(admin);
             return Task.Run(() => userContext.SaveChanges());
-            //var result = await this.FindByEmailAsync(adminLoginModel.Email);
-            //if(result != null)
-            //{
-            //    bool admin = userContext.AdminloginDetail.Any(e => e.Email == adminLoginModel.Email &&  e.Password == adminLoginModel.Password);
-            //    if (admin)
-            //    {
-            //        return "Login Successfully";
-            //    }
-            //}
-           // return "Ivalid";
+           
+        }
+        public bool LogInAdmin(string Email, string Password)
+        {
+            var result = userContext.AdminloginDetail.Where(p => p.Email == Email && p.Password == Password).FirstOrDefault();
+            if (result != null)
+            {
+                return true;
+            }
+            else
+                return false;
         }
         public Task<IdentityUser> FindByEmailAsync(string email)
         {

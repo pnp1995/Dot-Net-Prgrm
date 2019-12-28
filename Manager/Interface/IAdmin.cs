@@ -10,6 +10,7 @@ namespace FundooManager.Interface
    public interface IAdmin
     {
         Task<string> AddAdmin(AdminLoginModel adminLoginModel);
+        string LogInAdmin(string Email, string Password);
         Task<List<AdminModel>> DisplayUserStatistics();
         Task<List<UserModel>> DisplayUserDetails();
         //Task<string> AdminLogin(AdminLoginModel adminLoginModel);

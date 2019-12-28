@@ -28,6 +28,18 @@ namespace FundooManager.Manager
                 throw new Exception(ex.Message);
             }
         }
+        public string LogInAdmin(string Email, string Password)
+        {
+            bool result = adminRepo.LogInAdmin(Email, Password);
+            if (result)
+            {
+                return "Log In successfully";
+            }
+            else
+            {
+                return "Email /Password incorrect ";
+            }
+        }
 
         public async Task<List<AdminModel>> DisplayUserStatistics()
         {
