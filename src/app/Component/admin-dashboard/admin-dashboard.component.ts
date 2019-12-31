@@ -14,9 +14,9 @@ export class AdminDashboardComponent implements OnInit {
   user = true;
   list = [];
   userlist= [];
-  displayColumn: string[] = [ 'firstName', 'lastName', 'emailid', 'cardType','totalNotes','status'];
+  displayColumn: string[] = ['firstName', 'lastName', 'emailid', 'cardType','totalNotes','status'];
   displayColumns: string[] = ['id', 'email', 'loginTime', 'cardType'];
-  @ViewChild(MatPaginator) pageinator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private admin: AdminService) { }
 
   ngOnInit() {
@@ -24,11 +24,11 @@ export class AdminDashboardComponent implements OnInit {
   }
   getUserList() {
     this.admin.userList().subscribe((data: any) => {    
-      this.list = data.result;     
-      // this.listData = new MatTableDataSource(this.list);
+      this.list = data.result;        
       this.dataSource= this.list;
       console.log("sdgfhgsd",this.dataSource)
-      this.dataSource.pagin = this.pageinator;
+      this.dataSource = new MatTableDataSource(this.list);
+      this.dataSource.paginator = this.paginator;
     }
     )}
   getList() {
@@ -37,7 +37,7 @@ export class AdminDashboardComponent implements OnInit {
     console.log("logindetal-->",this.userlist);
     this.dataSource = this.userlist;
     this.dataSource = new MatTableDataSource(this.userlist);
-    this.dataSource.pagin = this.pageinator;
+    this.dataSource.paginator = this.paginator;
   })
   }
   UserDetailList() {

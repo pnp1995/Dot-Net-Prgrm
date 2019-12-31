@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
   profile = true;
   profileimage: File;
   photo = localStorage.getItem('imageUrl');
-  //userEmail: string;
   userName = localStorage.getItem('username');
   userEmail = localStorage.getItem('useremail');
   constructor(public dialog: MatDialog, private labelservice: LabelService, private dataservice: DataService,
@@ -43,6 +42,7 @@ export class DashboardComponent implements OnInit {
       console.log('label', this.label);
       this.list = true;
     });
+    this.profiles()
   }
 
   openLabel(): void {

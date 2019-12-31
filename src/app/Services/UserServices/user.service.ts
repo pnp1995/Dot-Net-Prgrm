@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  link = 'https://localhost:44366/api/Account';
+  link = 'http://localhost:44366/api/Account';
 
   postrequest(user) {
     console.log("user", user.firstName);
@@ -27,7 +27,10 @@ export class UserService {
       "Emailid": login.email,
       "Password": login.password,
     }
-    return this.http.post(this.link + '/login', body);
+    return this.http.post(this.link + '/login', body,{ headers: new HttpHeaders({ 
+      // 'Access-Control-Allow-Origin':'http://www.fundoobridgelabz.com',
+      // 'Content-Type':'application/xml'
+    })})
   }
   PostRequest(forget) {
     const body = {

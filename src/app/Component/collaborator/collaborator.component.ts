@@ -1,6 +1,6 @@
 import { UserService } from 'src/app/Services/UserServices/user.service';
 import { CollaboratorService } from './../../Services/Collaborator/collaborator.service';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,EventEmitter,Output  } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'angular-6-social-login';
@@ -19,6 +19,7 @@ export class CollaboratorComponent implements OnInit {
   item = [];
   addemail: string;
   userdata = JSON.parse(localStorage.getItem('userData'));
+  count : any;
 
   constructor(private collaborator: CollaboratorService,
     private userService: UserService,
@@ -33,12 +34,15 @@ export class CollaboratorComponent implements OnInit {
     console.log(this.token.value);
     this.userDetails();
     this.getList();
-    console.log("note data-->", this.onenote);
   }
   getList() {
     this.collaborator.getCollaborator(this.onenote.id).subscribe(response => {
       console.log("res in get list collab-->", response);
       this.collabList = response;
+      var count = this.collabList.length;
+      localStorage.setItem('countcollab',count);
+     console.log( "colaabnumber>....***", count);  
+
     }, error => {
       console.log("error in get collab list", error);
     });

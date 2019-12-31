@@ -25,7 +25,7 @@ export class UserRegisterComponent implements OnInit {
   onSubmit() {
     console.log('under submit', this.register.value);
     this.userService.postrequest(this.register.value).subscribe((data: any) => {
-      console.log(data.result);
+      console.log(data);
     });
   }
   onlogin() {

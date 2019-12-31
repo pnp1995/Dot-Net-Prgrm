@@ -1,5 +1,5 @@
 <div fxLayout="{{view}}"> 
-  <mat-card class="card"  [ngStyle]="{'background':note.colour}" cdkDrag *ngFor="let note of notes" 
+  <mat-card class="card"  [ngStyle]="{'background':note.colour}" draggable="true" cdkDrag *ngFor="let note of notes" 
      [ngClass]="{'notesDisplay':flag==true,'notes':flag==false}">
     <div>
       <span class="pin" (click)="unpin(note.id)" matTooltip="Unpin">
@@ -17,9 +17,17 @@
   <mat-chip-list class = "chip" >
       <mat-chip style="background-color:rgba(0,0,0,0.1); margin-bottom: 2%;">
       <img src="../../../assets/clock.svg">{{note.reminder | date:'short'}}
-      <mat-icon matChipRemove (click)="removeReminder(note)" >cancel</mat-icon>
+      <mat-icon matChipRemove (click)="removeReminder(note.id)" >cancel</mat-icon>
       </mat-chip>
   </mat-chip-list>
+
+<div>
+  <mat-chip-list>
+  <mat-chip style="background-color:rgba(0,0,0,0.1); margin-bottom: 2%;">
+    {{note.countcollab}}
+  </mat-chip>
+  </mat-chip-list>
+</div>
 
 </div>
       <div class="notes_icon" *ngIf="!trash">

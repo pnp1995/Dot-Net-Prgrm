@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class NotesServiceService {
- 
+
   constructor(private http: HttpClient) { }
   link = 'https://localhost:44366/api/notes';
   Postrequest(data, token) {
@@ -20,6 +20,10 @@ export class NotesServiceService {
   putrequest(id, date) {
     console.log(date);
     return this.http.put(this.link + '/reminder?Reminder=' + date + '&Id=' + id, null);
+  }
+  removeReminder(id, date) {
+   console.log(date);
+   return this.http.post(this.link + '/removereminder?Reminder=' + date + '&Id=' + id, null);  
   }
   GetArchive(id) {
     return this.http.put(this.link + '/archive?Id=' + id, null);

@@ -9,7 +9,6 @@ import { NotesServiceService } from 'src/app/Services/NotesServices/notes-servic
 export class ArchiveComponent implements OnInit {
   token = JSON.parse(localStorage.getItem('token'));
   archiveNotes = [];
-  userdata = JSON.parse(localStorage.getItem('userdata'));
   constructor(private Notes: NotesServiceService, ) { }
 
   ngOnInit() {
